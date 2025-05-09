@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Hospital Website Design Tutorial</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+          /* google font   */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* root color  */
+:root{
+  --blue:#0188df;
+  --black:#444d53;
+  --wight:#fff;
+}
+
+/* custom css  */
+*{
+  font-family: "Roboto", sans-serif;
+  margin: 0; padding: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+  outline: none;
+  box-sizing: border-box;
+  transition: all linear .2s;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+/* button  */
+.button{
+  height: 3.5rem;
+  width: 15rem;
+  background: var(--blue);
+  color: var(--wight);
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  border-radius: .5rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: .1rem solid var(--blue);
+}
+
+.button:hover{
+  border: .1rem solid var(--blue);
+  background: var(--wight);
+  color: var(--blue);
+  letter-spacing: .2rem;
+}
+
+/* heading  */
+.heading{
+  text-align: center;
+  font-size: 4rem;
+  padding: 1rem;
+  padding-top: 8rem;
+  color: var(--blue);
+  letter-spacing: .1rem;
+}
+/* title  */
+.title{
+  text-align: center;
+  padding: 0rem 1rem;
+  font-size: 2.5rem;
+  color: var(--black);
+  font-weight: 300;
+}
+
+
+
+/* header navbar section start  */
+
+header{
+  width: 96%;
+  background: var(--wight);
+  position:fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+/* logo name  */
+header a{
+  color: var(--black);
+}
+
+header a:hover{
+  color: var(--blue);
+}
+
+header .logo{
+  font-size: 3rem;
+}
+
+header .logo span{
+  color: var(--blue);
+}
+
+/* navbar link  */
+header .navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header .navbar ul li{
+  margin: 0 1rem;
+}
+
+header .navbar ul li a{
+  font-size: 2rem;
+  color: var(--black);
+}
+
+header .navbar ul li a:hover{
+  color: var(--blue);
+}
+
+header .fa-bars{
+  font-size: 3rem;
+  color: var(--blue);
+  cursor: pointer;
+  display: none;
+}
+
+header .fa-times{
+  transform: rotate(180deg);
+}
+
+
+.header-active{
+  top: 0;
+  width: 100%;
+  box-shadow: .1rem .3rem rgba(0,0,0,.3);
+}
+
+
+
+/* header navbar section end  */
+
+/* home section start  */
+
+.home{
+  min-height: 100vh;
+  padding-top: 10rem;
+}
+
+.home .row{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* home images  */
+.home .row .images img{
+  height: 75vh;
+}
+
+/* home heading  */
+.home .content h1{
+  font-size: 4rem;
+  color: var(--black);
+}
+
+.home .content h1 span{
+  color: var(--blue);
+}
+
+.home .content p{
+  font-size: 1.9rem;
+  color: var(--black);
+}
+
+
+/* home section end  */
+
+
+/* about section start  */
+.about{
+  background-color: #f9f9f9;
+}
+
+.about .box-container{
+  padding: 4rem 0;
+}
+
+.about .box-container .box{
+  width: 75%;
+  margin: 4rem auto;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--wight);
+}
+
+/* about images  */
+.about .box-container .box .images{
+  height: 40rem;
+  width: 50%;
+}
+
+.about .box-container .box .images img{
+  height: 100%;
+  width: 100%;
+}
+
+/* about heading & text */
+.about .box-container .box .content{
+  height: 100%;
+  width: 50%;
+  padding: 2rem;
+}
+
+.about .box-container .box .content h3{
+  font-size: 3rem;
+  color: var(--blue);
+  display: flex;
+  align-items: start;
+}
+
+.about .box-container .box .content p{
+  font-size: 1.5rem;
+  color: var(--black);
+  padding: 1rem 0;
+  text-align: start;
+}
+
+.about .box-container .box:nth-child(even){
+  flex-flow: row-reverse;
+}
+
+
+ /* about section end  */
+
+/* card section start  */
+
+.card .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card .box-container .box{
+  width: 30rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* card images  */
+.card .box-container .box img{
+  height: 30rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card .box-container .box .content{
+  padding: 1rem 1.3rem;
+}
+
+.card .box-container .box .content h2{
+  font-size: 2rem ;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content h2:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.card .box-container .box .content p{
+  font-size: 1.7rem;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content .icons{
+  text-align: center;
+}
+
+.card .box-container .box .content .icons a{
+  font-size: 2rem;
+  color: var(--blue);
+  text-align: center;
+  margin: 1rem;
+}
+/* card section end  */
+
+/* review section start  */
+.review .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.review .box-container .box{
+  width: 35rem;
+  text-align: center;
+  padding: 0 2rem;
+  margin: 4rem 1.5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* images  */
+.review .box-container .box .images{
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: .5rem 0;
+  border-top: .1rem solid #333;
+}
+
+.review .box-container .box .images img{
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: .8rem 1rem;
+}
+
+.review .box-container .box i{
+  font-size: 6rem ;
+  margin-top: -3rem;
+  color: var(--blue);
+  opacity: .4;
+}
+
+
+.review .box-container .box p{
+  color: var(--black);
+  font-size: 1.7rem;
+  padding: 2rem 0;
+}
+
+.review .box-container .box .info h3{
+  color: var(--blue);
+  font-size: 2rem;
+}
+.review .box-container .box .info span{
+  color: var(--black);
+  font-size: 2rem;
+}
+/* review section end */
+
+/* contact section start  */
+.contact{
+  background: #eee;
+}
+
+.contact .row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.contact .row .images img{
+  width: 50vw;
+  height: 70vh;
+}
+
+.contact .row  .form-container{
+  width: 50%;
+  padding-right: 6rem;
+}
+
+.contact .row  .form-container input, textarea{
+  height: 4rem;
+  width: 100%;
+  background: var(--wight);
+  border: none;
+  border-radius: 5rem;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  color: var(--blue);
+  font-size: 1.7rem;
+}
+
+.contact .row  .form-container input:focus , textarea:focus{
+  border: .2rem solid var(--blue);
+}
+
+.contact .row  .form-container textarea{
+  height: 20rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  resize: none;
+}
+
+.contact .row  .form-container input[type="submit"]{
+  width: 17rem;
+  background: var(--blue);
+  color: var(--wight);
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.contact .row  .form-container input[type="submit"]:hover{
+  background: var(--wight);
+  color: var(--blue);
+  border: .2rem solid var(--blue);
+}
+/* contact section end  */
+
+/* bolg section start  */
+.blog .box-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.blog .box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    height: 400px;
+    background: white;
+}
+
+.blog .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.blog .box img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog .box:hover img {
+    transform: scale(1.1);
+}
+
+.blog .box .content {
+    padding: 1.5rem;
+    background: white;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.blog .box:hover .content {
+    transform: translateY(-10px);
+}
+
+.blog .box .content h2 {
+    font-size: 2rem;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.blog .box:hover .content h2 {
+    color: #0170b3;
+}
+
+.blog .box .content p {
+    font-size: 1.4rem;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.blog .box .popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+    overflow-y: auto;
+    transform: scale(0.9);
+    backdrop-filter: blur(5px);
+}
+
+.blog .box:hover .popup {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.blog .box .popup h3 {
+    color: var(--blue);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--blue);
+    position: relative;
+}
+
+.blog .box .popup h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #0170b3;
+    transition: width 0.3s ease;
+}
+
+.blog .box:hover .popup h3::after {
+    width: 100px;
+}
+
+.blog .box .popup p {
+    font-size: 1.5rem;
+    color: var(--black);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.blog .box .popup ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.blog .box .popup li {
+    font-size: 1.4rem;
+    color: var(--black);
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.blog .box .popup li:hover {
+    transform: translateX(5px);
+}
+
+.blog .box .popup li::before {
+    content: '•';
+    color: var(--blue);
+    position: absolute;
+    left: 0;
+    font-size: 1.6rem;
+}
+
+/* Add scrollbar styles for popup */
+.blog .box .popup::-webkit-scrollbar {
+    width: 8px;
+}
+
+.blog .box .popup::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.blog .box .popup::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.blog .box .popup::-webkit-scrollbar-thumb:hover {
+    background: #0170b3;
+}
+
+/* Add close button for popup */
+.blog .box .popup .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--blue);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.blog .box .popup .close-btn:hover {
+    transform: rotate(90deg);
+    color: #0170b3;
+}
+
+/* Add section divider */
+.blog .box .popup .section-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--blue), transparent);
+    margin: 1.5rem 0;
+}
+
+/* Add animation for list items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.blog .box .popup li {
+    animation: slideIn 0.3s ease forwards;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+/* Responsive grid */
+@media (max-width: 1200px) {
+    .blog .box-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .blog .box-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .blog .box-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Add smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add animation for section heading */
+.heading {
+    animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* footer section start  */
+.footer{
+  background: var(--wight);
+  box-shadow: 0 -2px 16px rgba(1,136,223,0.07);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2.5rem 0 0.5rem 0;
+  border-top: 2px solid #e6f3ff;
+}
+
+.footer .box{
+  width: 30rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+.footer .box:nth-child(1){
+  text-align: left;
+}
+
+.footer .box .logo{
+  padding: 2rem 0 1rem 0;
+  font-size: 3rem;
+  color: var(--black);
+  transition: color 0.2s;
+}
+.footer .box .logo:hover{
+  color: var(--blue);
+}
+.footer .box .logo span{
+  color: var(--blue);
+}
+.footer .box p{
+  font-size: 1.5rem;
+  color: var(--black);
+}
+.footer .box a{
+  color: var(--black);
+  font-size: 2rem;
+  display: block;
+  padding: .2rem 0;
+  transition: color 0.2s;
+}
+.footer .box a:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+.footer .credit{
+  width: 85%;
+  padding-top: 1rem;
+  font-size: 2rem;
+  color: var(--black);
+  text-align: center;
+  border-top: .2rem solid #e6f3ff;
+  margin-top: 1.5rem;
+}
+.footer .credit span{
+  color: var(--blue);
+  text-decoration: underline;
+  letter-spacing: .5rem;
+}
+/* footer section end  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media query  */
+
+@media (max-width:768px){
+
+  html{
+      font-size: 55%;
+  }
+
+  header .fa-bars{
+      display: block;
+  }
+  
+  header .navbar{
+      position: fixed;
+      top: -100rem; left: 0;
+      width: 100%;
+      background: var(--wight);
+      opacity: 0;
+  }
+
+  header .navbar ul{
+      flex-flow: column;
+      padding: 2rem 0;
+  }
+
+  header .navbar ul li{
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+  }
+
+  header .navbar ul li a{
+      font-size: 3rem;
+      display: block;
+  }
+
+  header .nav-toggle{
+      top: 5.5rem;
+      opacity: 1;
+  }
+
+  /* home media query  */
+
+  .home .row{
+      flex-flow: column;
+  }
+
+  .home .row .content{
+      text-align: center;
+  }
+
+  /* home images  */
+  .home .row .images img{
+      width: 100%;
+  }
+
+/* about media query  */
+ .about .box-container .box{
+  flex-flow: column;
+  width: 90%;
+ }
+
+ .about .box-container .box:nth-child(even){
+  flex-flow: column;
+ }
+
+ .about .box-container .box .images{
+  width: 100%;
+ }
+
+ .about .box-container .box .content{
+  width: 100%;
+ }
+ 
+ /* contact form  */
+ .contact .row{
+  flex-flow: column;
+ }
+
+ .contact .row .images img{
+  height: 50vh;
+  width: 90vw;
+ }
+
+ .contact .row .form-container{
+  width: 90%;
+  padding: 0;
+ }
+}
+
+/* Add animation for popup elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.blog .box .popup h3 {
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.blog .box .popup .section-divider {
+    animation: fadeInRight 0.5s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.blog .box .popup p {
+    animation: fadeInLeft 0.5s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.blog .box .popup ul {
+    animation: fadeInUp 0.5s ease forwards;
+    animation-delay: 0.8s;
+    opacity: 0;
+}
+
+.blog .box .popup li {
+    animation: fadeInRight 0.5s ease forwards;
+    animation-delay: calc(var(--i) * 0.1s + 1s);
+    opacity: 0;
+}
+
+.blog .box .popup .close-btn {
+    animation: scaleIn 0.5s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+/* Add hover effect for popup content */
+.blog .box .popup p:hover,
+.blog .box .popup li:hover {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* Add smooth reveal effect for popup */
+.blog .box .popup {
+    transform-origin: center;
+    animation: reveal 0.5s ease forwards;
+}
+
+@keyframes reveal {
+    from {
+        clip-path: circle(0% at 50% 50%);
+    }
+    to {
+        clip-path: circle(100% at 50% 50%);
+    }
+}
+
+/* Add floating effect for images */
+.blog .box img {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Add glow effect for hover state */
+.blog .box:hover {
+    box-shadow: 0 0 20px rgba(1, 136, 223, 0.3);
+}
+
+/* Add smooth transition for all animations */
+.blog .box .popup * {
+    transition: all 0.3s ease;
+}
+    </style>
+</head>
+
+<body>
+
+
+    <!-- header navbar section start  -->
+
+    <header>
+
+        <!-- logo name  -->
+        <a href="http://127.0.0.1:5000/" class="logo"> <h2 class="logo"><span>v</span>ita <span>C</span>ares</h2></a>
+
+        <!-- navbar link  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/vita">vitamins</a></li>
+                <li><a href="/diseases">diseases</a></li>
+                <li><a href="/predict">check vitamins</a></li>
+                <li><a href="/contact">contact</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="fas fa-bars"></div>
+    </header>
+    <!-- header navbar section end  -->
+
+    <!-- home section start  -->
+
+   
+    <!-- review section end  -->
+ 
+    <!-- contact section start  -->
+
+
+
+    <!-- contact section end  -->
+
+
+    <!-- blog section start  -->
+
+    <section id="blog" class="blog">
+        <h1 class="heading">DISEASES</h1>
+        <h3 class="title">Problems that affect the body</h3>
+
+        <div class="box-container">
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna1.jpg') }}" alt="Fatigue">
+                <div class="content">
+                    <h2>FATIGUE</h2>
+                    <p>Fatigue symptoms refer to feelings of extreme tiredness, lack of energy, or exhaustion that can be physical, mental, or both.</p>
+                </div>
+                <div class="popup">
+                    <span class="close-btn">&times;</span>
+                    <h3>FATIGUE - Detailed Information</h3>
+                    <div class="section-divider"></div>
+                    <p>Fatigue is a common symptom that can be caused by various factors:</p>
+                    <ul>
+                        <li style="--i: 1">Physical causes: Lack of sleep, poor diet, dehydration, anemia</li>
+                        <li style="--i: 2">Mental causes: Stress, anxiety, depression</li>
+                        <li style="--i: 3">Medical conditions: Thyroid problems, diabetes, heart disease</li>
+                        <li style="--i: 4">Lifestyle factors: Sedentary lifestyle, excessive caffeine, alcohol use</li>
+                    </ul>
+                    <div class="section-divider"></div>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li style="--i: 5">Persistent tiredness</li>
+                        <li style="--i: 6">Difficulty concentrating</li>
+                        <li style="--i: 7">Muscle weakness</li>
+                        <li style="--i: 8">Headaches</li>
+                        <li style="--i: 9">Irritability</li>
+                    </ul>
+                    <div class="section-divider"></div>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li style="--i: 10">Improve sleep habits</li>
+                        <li style="--i: 11">Regular exercise</li>
+                        <li style="--i: 12">Balanced diet</li>
+                        <li style="--i: 13">Stress management</li>
+                        <li style="--i: 14">Medical consultation if persistent</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna2.jpg') }}" alt="Nausea">
+                <div class="content">
+                    <h2>NAUSEA</h2>
+                    <p>Nausea is the uneasy or uncomfortable sensation in the stomach that often makes you feel like you need to vomit.</p>
+                </div>
+                <div class="popup">
+                    <h3>NAUSEA - Detailed Information</h3>
+                    <p>Nausea can be caused by various factors:</p>
+                    <ul>
+                        <li>Gastrointestinal issues: Food poisoning, stomach flu</li>
+                        <li>Motion sickness</li>
+                        <li>Pregnancy (morning sickness)</li>
+                        <li>Medications and treatments</li>
+                        <li>Migraines</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Queasy feeling in stomach</li>
+                        <li>Increased saliva production</li>
+                        <li>Sweating</li>
+                        <li>Loss of appetite</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Rest and hydration</li>
+                        <li>Ginger tea or supplements</li>
+                        <li>Small, bland meals</li>
+                        <li>Anti-nausea medications</li>
+                        <li>Acupressure wristbands</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna3.webp') }}" alt="Weight Loss">
+                <div class="content">
+                    <h2>WEIGHT LOSS</h2>
+                    <p>Weight loss refers to a decrease in body weight, which can result from a variety of factors.</p>
+                </div>
+                <div class="popup">
+                    <h3>WEIGHT LOSS - Detailed Information</h3>
+                    <p>Weight loss can be intentional or unintentional:</p>
+                    <ul>
+                        <li>Intentional causes: Diet, exercise, lifestyle changes</li>
+                        <li>Unintentional causes: Medical conditions, stress, medications</li>
+                        <li>Metabolic disorders</li>
+                        <li>Digestive problems</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Decreased appetite</li>
+                        <li>Fatigue</li>
+                        <li>Muscle weakness</li>
+                        <li>Changes in bowel habits</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Balanced diet plan</li>
+                        <li>Regular exercise</li>
+                        <li>Medical evaluation</li>
+                        <li>Nutritional supplements</li>
+                        <li>Stress management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna4.webp') }}" alt="Skin">
+                <div class="content">
+                    <h2>SKIN</h2>
+                    <p>Skin deficiency refers to a lack of essential nutrients, hydration, or care, leading to various skin problems.</p>
+                </div>
+                <div class="popup">
+                    <h3>SKIN DEFICIENCY - Detailed Information</h3>
+                    <p>Common skin deficiencies and their causes:</p>
+                    <ul>
+                        <li>Vitamin A deficiency: Dry, rough skin</li>
+                        <li>Vitamin C deficiency: Poor wound healing</li>
+                        <li>Vitamin E deficiency: Skin aging</li>
+                        <li>Zinc deficiency: Acne, rashes</li>
+                        <li>Essential fatty acids: Dry, flaky skin</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Dryness and flakiness</li>
+                        <li>Slow wound healing</li>
+                        <li>Premature aging</li>
+                        <li>Acne and breakouts</li>
+                        <li>Skin discoloration</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Balanced diet rich in vitamins</li>
+                        <li>Proper hydration</li>
+                        <li>Regular skincare routine</li>
+                        <li>Sun protection</li>
+                        <li>Nutritional supplements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna5.jpg') }}" alt="Hair Loss">
+                <div class="content">
+                    <h2>HAIR LOSS</h2>
+                    <p>Hair loss, also called alopecia, is when you lose more hair than usual, leading to thinning or bald spots.</p>
+                </div>
+                <div class="popup">
+                    <h3>HAIR LOSS - Detailed Information</h3>
+                    <p>Common causes of hair loss:</p>
+                    <ul>
+                        <li>Genetic factors (androgenetic alopecia)</li>
+                        <li>Hormonal changes</li>
+                        <li>Nutritional deficiencies</li>
+                        <li>Stress and anxiety</li>
+                        <li>Medical conditions</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Gradual thinning on top of head</li>
+                        <li>Circular or patchy bald spots</li>
+                        <li>Sudden loosening of hair</li>
+                        <li>Full-body hair loss</li>
+                        <li>Patches of scaling</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Medications (minoxidil, finasteride)</li>
+                        <li>Hair transplant surgery</li>
+                        <li>Laser therapy</li>
+                        <li>Nutritional supplements</li>
+                        <li>Stress management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna6.jpeg') }}" alt="Pale Skin">
+                <div class="content">
+                    <h2>PALE SKIN</h2>
+                    <p>Having pale or yellowish skin can be a sign of different health conditions.</p>
+                </div>
+                <div class="popup">
+                    <h3>PALE SKIN - Detailed Information</h3>
+                    <p>Common causes of pale skin:</p>
+                    <ul>
+                        <li>Anemia (iron deficiency)</li>
+                        <li>Vitamin B12 deficiency</li>
+                        <li>Poor circulation</li>
+                        <li>Low blood pressure</li>
+                        <li>Liver problems</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Lighter than normal skin tone</li>
+                        <li>Yellowish tint (jaundice)</li>
+                        <li>Fatigue</li>
+                        <li>Dizziness</li>
+                        <li>Shortness of breath</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Iron supplements</li>
+                        <li>Vitamin B12 injections</li>
+                        <li>Dietary changes</li>
+                        <li>Regular exercise</li>
+                        <li>Medical evaluation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna7.jpg') }}" alt="Weak System">
+                <div class="content">
+                    <h2>WEAK SYSTEM</h2>
+                    <p>Weak immune system is has sick often, especially with colds, flu, or infections.</p>
+                </div>
+                <div class="popup">
+                    <h3>WEAK IMMUNE SYSTEM - Detailed Information</h3>
+                    <p>Common causes of weak immune system:</p>
+                    <ul>
+                        <li>Chronic stress</li>
+                        <li>Poor nutrition</li>
+                        <li>Lack of sleep</li>
+                        <li>Sedentary lifestyle</li>
+                        <li>Underlying medical conditions</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Frequent infections</li>
+                        <li>Slow wound healing</li>
+                        <li>Chronic fatigue</li>
+                        <li>Digestive problems</li>
+                        <li>Autoimmune disorders</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Balanced diet rich in vitamins</li>
+                        <li>Regular exercise</li>
+                        <li>Adequate sleep</li>
+                        <li>Stress management</li>
+                        <li>Probiotics and supplements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <img src="{{ url_for('static', filename='images/krishna8.jpeg') }}" alt="Vision Problem">
+                <div class="content">
+                    <h2>VISION PROBLEM</h2>
+                    <p>Vision problems could be due to various factors, including eye strain, nutritional deficiencies, aging, or underlying medical conditions.</p>
+                </div>
+                <div class="popup">
+                    <h3>VISION PROBLEMS - Detailed Information</h3>
+                    <p>Common causes of vision problems:</p>
+                    <ul>
+                        <li>Refractive errors (nearsightedness, farsightedness)</li>
+                        <li>Age-related changes</li>
+                        <li>Vitamin A deficiency</li>
+                        <li>Eye strain</li>
+                        <li>Underlying health conditions</li>
+                    </ul>
+                    <p>Common symptoms include:</p>
+                    <ul>
+                        <li>Blurred vision</li>
+                        <li>Double vision</li>
+                        <li>Eye strain</li>
+                        <li>Headaches</li>
+                        <li>Difficulty seeing at night</li>
+                    </ul>
+                    <p>Treatment options:</p>
+                    <ul>
+                        <li>Regular eye exams</li>
+                        <li>Corrective lenses</li>
+                        <li>Eye exercises</li>
+                        <li>Nutritional supplements</li>
+                        <li>Proper lighting and screen time management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- blog section end  -->
+
+    <!-- footer section start  -->
+
+    <section class="footer">
+        <div class="box">
+            <h2 class="logo"><span>V</span>ita <span>C</span>ares</h2>
+            <p>VitaCares provides innovative healthcare solutions through AI-powered vitamin deficiency detection and personalized health recommendations.</p>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>S</span>hare</h2>
+            <a href="#"><i class="fab fa-facebook"></i> facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>L</span>inks</h2>
+            <a href="/">home</a>
+            <a href="/about">about</a>
+            <a href="/vita">vitamins</a>
+            <a href="/diseases">diseases</a>
+            <a href="/predict">check vitamins</a>
+            <a href="/contact">contact</a>
+        </div>
+
+        <h1 class="credit">created by <span>Neel Merja & Krishna Modhavadiya</span> all rights reserved.</h1>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- footer section end  -->
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <!-- jquery cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/05/09/20250205095716-4K0TQ7NK.js"></script>
+    
+    
+    <!-- custom js file link  -->
+    <script >
+        //   navbar function 
+$(document).ready(function(){
+
+$('.fa-bars').click(function(){
+    $(this).toggleClass('fa-times');
+    $('.navbar').toggleClass('nav-toggle');
+});
+
+$(window).on('scroll load',function(){
+    $('.fa-bars').removeClass('fa-times');
+    $('.navbar').removeClass('nav-toggle');
+
+    if($(Window).scrollTop()  >  30){
+        $('header').addClass('header-active');
+    }else{
+        $('header').removeClass('header-active');
+    }
+});
+
+// Enhanced popup functionality
+$('.box').hover(
+    function() {
+        const $popup = $(this).find('.popup');
+        $popup.css({
+            'opacity': '1',
+            'visibility': 'visible',
+            'transform': 'scale(1)'
+        });
+        
+        // Reset animations for all elements
+        $popup.find('*').css('animation', 'none');
+        setTimeout(() => {
+            $popup.find('*').css('animation', '');
+        }, 10);
+    },
+    function() {
+        $(this).find('.popup').css({
+            'opacity': '0',
+            'visibility': 'hidden',
+            'transform': 'scale(0.9)'
+        });
+    }
+);
+
+// Close button functionality
+$('.close-btn').click(function(e) {
+    e.stopPropagation();
+    const $popup = $(this).closest('.popup');
+    $popup.css({
+        'opacity': '0',
+        'visibility': 'hidden',
+        'transform': 'scale(0.9)'
+    });
+});
+
+// Prevent popup from closing when clicking inside
+$('.popup').click(function(e) {
+    e.stopPropagation();
+});
+
+// Close popup when clicking outside
+$(document).click(function() {
+    $('.popup').css({
+        'opacity': '0',
+        'visibility': 'hidden',
+        'transform': 'scale(0.9)'
+    });
+});
+
+// Add hover effect for list items
+$('.popup li').hover(
+    function() {
+        $(this).css('transform', 'translateX(10px)');
+    },
+    function() {
+        $(this).css('transform', 'translateX(0)');
+    }
+);
+
+// Add scroll reveal effect
+$(window).scroll(function() {
+    $('.box').each(function() {
+        const elementTop = $(this).offset().top;
+        const elementBottom = elementTop + $(this).outerHeight();
+        const viewportTop = $(window).scrollTop();
+        const viewportBottom = viewportTop + $(window).height();
+        
+        if (elementBottom > viewportTop && elementTop < viewportBottom) {
+            $(this).addClass('visible');
+        }
+    });
+});
+
+// Initialize animations
+$('.box').addClass('visible');
+
+});
+
+    </script>
+</body>
+
+</html>

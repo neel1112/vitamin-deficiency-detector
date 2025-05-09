@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Hospital Website Design Tutorial</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+          /* google font   */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* root color  */
+:root{
+  --blue:#0188df;
+  --black:#444d53;
+  --wight:#fff;
+  --gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  --hover-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* custom css  */
+*{
+  font-family: "Roboto", sans-serif;
+  margin: 0; padding: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--gradient);
+  min-height: 100vh;
+}
+
+/* button  */
+.button{
+  height: 3.5rem;
+  width: 15rem;
+  background: var(--blue);
+  color: var(--wight);
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  border-radius: .5rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: .1rem solid var(--blue);
+}
+
+.button:hover{
+  border: .1rem solid var(--blue);
+  background: var(--wight);
+  color: var(--blue);
+  letter-spacing: .2rem;
+}
+
+/* heading  */
+.heading{
+  text-align: center;
+  font-size: 4.5rem;
+  padding: 2rem;
+  padding-top: 8rem;
+  color: var(--blue);
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
+  height: 0.3rem;
+  background: var(--blue);
+  border-radius: 0.5rem;
+}
+
+/* title  */
+.title{
+  text-align: center;
+  padding: 0rem 1rem;
+  font-size: 2.5rem;
+  color: var(--black);
+  font-weight: 300;
+}
+
+
+
+/* header navbar section start  */
+
+header{
+  width: 96%;
+  background: var(--wight);
+  position:fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+/* logo name  */
+header a{
+  color: var(--black);
+}
+
+header a:hover{
+  color: var(--blue);
+}
+
+header .logo{
+  font-size: 3rem;
+}
+
+header .logo span{
+  color: var(--blue);
+}
+
+/* navbar link  */
+header .navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header .navbar ul li{
+  margin: 0 1rem;
+}
+
+header .navbar ul li a{
+  font-size: 2rem;
+  color: var(--black);
+}
+
+header .navbar ul li a:hover{
+  color: var(--blue);
+}
+
+header .fa-bars{
+  font-size: 3rem;
+  color: var(--blue);
+  cursor: pointer;
+  display: none;
+}
+
+header .fa-times{
+  transform: rotate(180deg);
+}
+
+
+.header-active{
+  top: 0;
+  width: 100%;
+  box-shadow: .1rem .3rem rgba(0,0,0,.3);
+}
+
+
+
+/* header navbar section end  */
+
+/* home section start  */
+
+.home{
+  min-height: 100vh;
+  padding-top: 10rem;
+}
+
+.home .row{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* home images  */
+.home .row .images img{
+  height: 75vh;
+}
+
+/* home heading  */
+.home .content h1{
+  font-size: 4rem;
+  color: var(--black);
+}
+
+.home .content h1 span{
+  color: var(--blue);
+}
+
+.home .content p{
+  font-size: 1.9rem;
+  color: var(--black);
+}
+
+
+/* home section end  */
+
+
+/* about section start  */
+.about{
+  padding: 8rem 0;
+  background: var(--gradient);
+}
+
+.about .box-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about .box-container .box{
+  background: var(--wight);
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  position: relative;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.about .box-container .box:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--hover-shadow);
+}
+
+.about .box-container .box .images{
+  height: 25rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.about .box-container .box .images::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.about .box-container .box .images img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about .box-container .box:hover .images img {
+  transform: scale(1.1);
+}
+
+.about .box-container .box .content{
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.about .box-container .box .content h3{
+  font-size: 2.5rem;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.about .box-container .box .content p{
+  font-size: 1.6rem;
+  color: var(--black);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.about .box-container .box .content .button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--blue);
+  color: var(--wight);
+  font-size: 1.6rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid var(--blue);
+  font-weight: 500;
+  letter-spacing: 1px;
+  pointer-events: none; /* Prevent button from interfering with card click */
+}
+
+.about .box-container .box .content .button:hover {
+  background: transparent;
+  color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Add overlay effect */
+.about .box-container .box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  transition: background 0.3s ease;
+  z-index: 1;
+}
+
+.about .box-container .box:hover::after {
+  background: rgba(0,0,0,0.1);
+}
+
+/* Media query for responsive grid */
+@media (max-width: 1200px) {
+  .about .box-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    width: 95%;
+  }
+}
+
+@media (max-width: 992px) {
+  .about .box-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .box-container {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+  
+  .heading {
+    font-size: 3.5rem;
+  }
+}
+
+/* card section start  */
+
+.card .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card .box-container .box{
+  width: 30rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* card images  */
+.card .box-container .box img{
+  height: 30rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card .box-container .box .content{
+  padding: 1rem 1.3rem;
+}
+
+.card .box-container .box .content h2{
+  font-size: 2rem ;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content h2:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.card .box-container .box .content p{
+  font-size: 1.7rem;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content .icons{
+  text-align: center;
+}
+
+.card .box-container .box .content .icons a{
+  font-size: 2rem;
+  color: var(--blue);
+  text-align: center;
+  margin: 1rem;
+}
+/* card section end  */
+
+/* review section start  */
+.review .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.review .box-container .box{
+  width: 35rem;
+  text-align: center;
+  padding: 0 2rem;
+  margin: 4rem 1.5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* images  */
+.review .box-container .box .images{
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: .5rem 0;
+  border-top: .1rem solid #333;
+}
+
+.review .box-container .box .images img{
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: .8rem 1rem;
+}
+
+.review .box-container .box i{
+  font-size: 6rem ;
+  margin-top: -3rem;
+  color: var(--blue);
+  opacity: .4;
+}
+
+
+.review .box-container .box p{
+  color: var(--black);
+  font-size: 1.7rem;
+  padding: 2rem 0;
+}
+
+.review .box-container .box .info h3{
+  color: var(--blue);
+  font-size: 2rem;
+}
+.review .box-container .box .info span{
+  color: var(--black);
+  font-size: 2rem;
+}
+/* review section end */
+
+/* contact section start  */
+.contact{
+  background: #eee;
+}
+
+.contact .row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.contact .row .images img{
+  width: 50vw;
+  height: 70vh;
+}
+
+.contact .row  .form-container{
+  width: 50%;
+  padding-right: 6rem;
+}
+
+.contact .row  .form-container input, textarea{
+  height: 4rem;
+  width: 100%;
+  background: var(--wight);
+  border: none;
+  border-radius: 5rem;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  color: var(--blue);
+  font-size: 1.7rem;
+}
+
+.contact .row  .form-container input:focus , textarea:focus{
+  border: .2rem solid var(--blue);
+}
+
+.contact .row  .form-container textarea{
+  height: 20rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  resize: none;
+}
+
+.contact .row  .form-container input[type="submit"]{
+  width: 17rem;
+  background: var(--blue);
+  color: var(--wight);
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.contact .row  .form-container input[type="submit"]:hover{
+  background: var(--wight);
+  color: var(--blue);
+  border: .2rem solid var(--blue);
+}
+/* contact section end  */
+
+/* bolg section start  */
+.blog .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.blog .box-container .box{
+  width: 35rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* blog images  */
+.blog .box-container .box img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.blog .box-container .box .content{
+  padding: 0 1.5rem;
+}
+
+.blog .box-container .box .content h2{
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.blog .box-container .box .content p{
+  font-size: 1.3rem;
+  color: var(--black);
+}
+/* bolg section end  */
+
+/* footer section start  */
+.footer{
+  background: var(--wight);
+  box-shadow: 0 -2px 16px rgba(1,136,223,0.07);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2.5rem 0 0.5rem 0;
+  border-top: 2px solid #e6f3ff;
+}
+
+.footer .box{
+  width: 30rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+.footer .box:nth-child(1){
+  text-align: left;
+}
+
+.footer .box .logo{
+  padding: 2rem 0 1rem 0;
+  font-size: 3rem;
+  color: var(--black);
+  transition: color 0.2s;
+}
+.footer .box .logo:hover{
+  color: var(--blue);
+}
+.footer .box .logo span{
+  color: var(--blue);
+}
+.footer .box p{
+  font-size: 1.5rem;
+  color: var(--black);
+}
+.footer .box a{
+  color: var(--black);
+  font-size: 2rem;
+  display: block;
+  padding: .2rem 0;
+  transition: color 0.2s;
+}
+.footer .box a:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+.footer .credit{
+  width: 85%;
+  padding-top: 1rem;
+  font-size: 2rem;
+  color: var(--black);
+  text-align: center;
+  border-top: .2rem solid #e6f3ff;
+  margin-top: 1.5rem;
+}
+.footer .credit span{
+  color: var(--blue);
+  text-decoration: underline;
+  letter-spacing: .5rem;
+}
+/* footer section end  */
+
+/* Advanced Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 100%);
+    z-index: 1000;
+    overflow-y: auto;
+    animation: modalFadeIn 0.5s ease;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+    margin: 2% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 20px;
+    position: relative;
+    animation: modalContentSlideIn 0.5s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalContentSlideIn {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--modal-color) 0%, var(--modal-color-dark) 100%);
+    color: var(--wight);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm63 31c1.657 0 3-1.343 3-3s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM34 90c1.657 0 3-1.343 3-3s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.657 0 3-1.343 3-3s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.1;
+}
+
+.modal-header h2 {
+    font-size: 3.5rem;
+    color: var(--wight);
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.close-modal {
+    font-size: 3rem;
+    color: var(--wight);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    transform: rotate(90deg);
+    background: rgba(255,255,255,0.3);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-image-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.modal-image-container:hover .modal-image {
+    transform: scale(1.05);
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.modal-description {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    color: var(--black);
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.modal-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.detail-item {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.detail-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--modal-color);
+    transition: width 0.3s ease;
+}
+
+.detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.detail-item:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.detail-item h3 {
+    color: var(--blue);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.detail-item p {
+    font-size: 1.6rem;
+    color: var(--black);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* Scrollbar styling */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1% auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-header h2 {
+        font-size: 2.5rem;
+    }
+    
+    .modal-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-description {
+        font-size: 1.6rem;
+    }
+}
+
+/* media query  */
+
+@media (max-width:768px){
+
+  html{
+      font-size: 55%;
+  }
+
+  header .fa-bars{
+      display: block;
+  }
+  
+  header .navbar{
+      position: fixed;
+      top: -100rem; left: 0;
+      width: 100%;
+      background: var(--wight);
+      opacity: 0;
+  }
+
+  header .navbar ul{
+      flex-flow: column;
+      padding: 2rem 0;
+  }
+
+  header .navbar ul li{
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+  }
+
+  header .navbar ul li a{
+      font-size: 3rem;
+      display: block;
+  }
+
+  header .nav-toggle{
+      top: 5.5rem;
+      opacity: 1;
+  }
+
+  /* home media query  */
+
+  .home .row{
+      flex-flow: column;
+  }
+
+  .home .row .content{
+      text-align: center;
+  }
+
+  /* home images  */
+  .home .row .images img{
+      width: 100%;
+  }
+
+/* about media query  */
+ .about .box-container .box{
+  flex-flow: column;
+  width: 90%;
+ }
+
+ .about .box-container .box:nth-child(even){
+  flex-flow: column;
+ }
+
+ .about .box-container .box .images{
+  width: 100%;
+ }
+
+ .about .box-container .box .content{
+  width: 100%;
+ }
+ 
+ /* contact form  */
+ .contact .row{
+  flex-flow: column;
+ }
+
+ .contact .row .images img{
+  height: 50vh;
+  width: 90vw;
+ }
+
+ .contact .row .form-container{
+  width: 90%;
+  padding: 0;
+ }
+}
+    </style>
+</head>
+
+<body>
+
+
+    <!-- header navbar section start  -->
+
+    <header>
+
+        <!-- logo name  -->
+        <a href="#" class="logo"> <h2 class="logo"><span>v</span>ita <span>C</span>ares</h2></a>
+
+        <!-- navbar link  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/vita">vitamins</a></li>
+                <li><a href="/diseases">diseases</a></li>
+                <li><a href="/predict">check vitamins</a></li>
+                <li><a href="/contact">contact</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="fas fa-bars"></div>
+    </header>
+    <!-- header navbar section end  -->
+
+    <!-- home section start  -->
+
+    
+    <!-- home section end  -->
+
+    <!-- about section start  -->
+
+    <section id="about" class="about">
+
+        <h1 class="heading">Types of vitamins</h1>
+        
+
+        <div class="box-container">
+
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <div class="images">
+                    <img src="{{ url_for('static', filename='images/vit a.jpg') }}" class="w-100" alt="">
+                </div>
+                
+                <!-- about heading & text  -->
+                <div class="content">
+                    <h3>VITAMIN A</h3>
+                    <p>Vitamin A helps form and maintain healthy teeth, skeletal and soft tissue, mucus membranes, and skin. It is also known as retinol because it produces the pigments in the retina of the eye.</p>
+                 <a href="https://medlineplus.gov/ency/article/002400.htm#:~:text=Vitamin%20A%20helps%20form%20and,in%20healthy%20pregnancy%20and%20breastfeeding."><button class="button">learn more</button></a>   
+                </div>
+            </div>
+            <!-- end here  -->
+
+            
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <div class="images">
+                    <img src="{{ url_for('static', filename='images/vit b.jpg') }}" class="w-100" alt="">
+                </div>
+                
+                <!-- about heading & text  -->
+                <div class="content">
+                    <h3>VITAMIN B</h3>
+                    <p>Vitamin B is a group of eight water-soluble vitamins that help the body convert food into energy. They are also known as the B-complex or B-group vitamins. </p>
+                 <a href="https://medlineplus.gov/bvitamins.html"><button class="button">learn more</button></a>   
+                </div>
+            </div>
+            <!-- end here  -->
+
+            
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <div class="images">
+                    <img src="{{ url_for('static', filename='images/vit c.jpg') }}" class="w-100" alt="">
+                </div>
+                
+                <!-- about heading & text  -->
+                <div class="content">
+                    <h3>VITAMIN C</h3>
+                    <P>Vitamin C, also known as ascorbic acid, is a nutrient that helps the body heal, produce collagen, and absorb iron. It's also an antioxidant that helps protect cells from damage. </P>
+                 <a href="https://medlineplus.gov/ency/article/002404.htm"><button class="button">learn more</button></a>   
+                </div>
+            </div>
+
+            <div class="box">
+                <!-- about images  -->
+                <div class="images">
+                    <img src="{{ url_for('static', filename='images/vit d.jpg') }}" class="w-100" alt="">
+                </div>
+                
+                <!-- about heading & text  -->
+                <div class="content">
+                    <h3>VITAMIN D</h3>
+                    <P>Without sufficient vitamin D, bones can become thin, brittle, or misshapen. Vitamin D sufficiency prevents rickets in children and osteomalacia in adults</P>
+                 <a href="https://my.clevelandclinic.org/health/diseases/15050-vitamin-d-vitamin-d-deficiency"><button class="button">learn more</button></a>   
+                </div>
+            </div>
+            <!-- end here  -->
+
+            
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <div class="images">
+                    <img src="{{ url_for('static', filename='images/vit e.jpeg') }}" class="w-100" alt="">
+                </div>
+                
+                <!-- about heading & text  -->
+                <div class="content">
+                    <h3>VITAMIN E</h3>
+                    <P>It helps keep the immune system strong against viruses and bacteria. It helps form red blood cells and widen blood vessels to keep blood from clotting inside them. It helps the body use vitamin K. Cells also use vitamin E to interact with each other.</P>
+                 <a href="https://medlineplus.gov/ency/article/002406.htm#:~:text=It%20helps%20keep%20the%20immune,to%20interact%20with%20each%20other."><button class="button">learn more</button></a>   
+                </div>
+            </div>
+            <!-- end here  -->
+
+            
+            <!-- start here  -->
+            <div class="box">
+                <!-- about images  -->
+                <div class="images">
+                    <img src="{{ url_for('static', filename='images/vit k.jpg') }}" class="w-100" alt="">
+                </div>
+                
+                <!-- about heading & text  -->
+                <div class="content">
+                    <h3>VITAMIN K</h3>
+                    <P>Vitamin K is a fat-soluble vitamin that helps your body clot blood and heal wounds. It's also important for bone health. </P>
+                 <a href="https://medlineplus.gov/ency/article/002407.htm"><button class="button">learn more</button></a>   
+                </div>
+            </div>
+
+
+
+            <!-- end here  -->
+           </div>
+    </section>
+
+    <!-- about section end  -->
+    
+    <!-- card section start  -->
+
+
+
+
+    <!-- blog section end  -->
+
+    <!-- footer section start  -->
+
+    <section class="footer">
+        <div class="box">
+            <h2 class="logo"><span>V</span>ita <span>C</span>ares</h2>
+            <p>VitaCares provides innovative healthcare solutions through AI-powered vitamin deficiency detection and personalized health recommendations.</p>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>S</span>hare</h2>
+            <a href="#"><i class="fab fa-facebook"></i> facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>L</span>inks</h2>
+            <a href="/">home</a>
+            <a href="/about">about</a>
+            <a href="/vita">vitamins</a>
+            <a href="/diseases">diseases</a>
+            <a href="/predict">check vitamins</a>
+            <a href="/contact">contact</a>
+        </div>
+
+        <h1 class="credit">created by <span>Neel Merja & Krishna Modhavadiya</span> all rights reserved.</h1>
+    </section>
+
+    <!-- Add this modal structure before the footer -->
+    <div class="modal" id="vitaminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Vitamin Title</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalImage" class="modal-image" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <div class="modal-description">
+                        <h3>Overview</h3>
+                        <p id="modalDescription"></p>
+                    </div>
+                    <div class="modal-details">
+                        <div class="detail-item">
+                            <h3>Key Benefits</h3>
+                            <ul id="modalBenefits"></ul>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Food Sources</h3>
+                            <ul id="modalSources"></ul>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Daily Requirements</h3>
+                            <div id="modalRequirement"></div>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Deficiency Symptoms</h3>
+                            <ul id="modalDeficiency"></ul>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Toxicity Risks</h3>
+                            <ul id="modalToxicity"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer section end  -->
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <!-- jquery cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+   
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/05/09/20250205095716-4K0TQ7NK.js"></script>
+    
+    <!-- custom js file link  -->
+    <script >
+        //   navbar function 
+$(document).ready(function(){
+
+$('.fa-bars').click(function(){
+    $(this).toggleClass('fa-times');
+    $('.navbar').toggleClass('nav-toggle');
+});
+
+$(window).on('scroll load',function(){
+    $('.fa-bars').removeClass('fa-times');
+    $('.navbar').removeClass('nav-toggle');
+
+    if($(Window).scrollTop()  >  30){
+        $('header').addClass('header-active');
+    }else{
+        $('header').removeClass('header-active');
+    }
+});
+
+// Card hover effects
+$('.box').hover(
+    function() {
+        $(this).css('transform', 'scale(1.05)');
+        $(this).css('box-shadow', '0 10px 20px rgba(0,0,0,0.2)');
+        $(this).find('img').css('filter', 'brightness(1.1)');
+    },
+    function() {
+        $(this).css('transform', 'scale(1)');
+        $(this).css('box-shadow', '0 .3rem .5rem rgba(0,0,0,.3)');
+        $(this).find('img').css('filter', 'brightness(1)');
+    }
+);
+
+// Text animation on scroll
+$(window).scroll(function() {
+    $('.box').each(function() {
+        var elementTop = $(this).offset().top;
+        var elementBottom = elementTop + $(this).outerHeight();
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        
+        if (elementBottom > viewportTop && elementTop < viewportBottom) {
+            $(this).addClass('animate__animated animate__fadeInUp');
+        }
+    });
+});
+
+// Dynamic background color change
+let colors = ['#f9f9f9', '#f0f8ff', '#fff5ee', '#f5f5f5'];
+let currentColorIndex = 0;
+
+function changeBackgroundColor() {
+    $('body').css('background-color', colors[currentColorIndex]);
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+}
+
+// Change background color every 5 seconds
+setInterval(changeBackgroundColor, 5000);
+
+// Button hover effect
+$('.button').hover(
+    function() {
+        $(this).css('transform', 'translateY(-5px)');
+        $(this).css('box-shadow', '0 5px 15px rgba(0,0,0,0.3)');
+    },
+    function() {
+        $(this).css('transform', 'translateY(0)');
+        $(this).css('box-shadow', 'none');
+    }
+);
+
+// Add smooth scrolling
+$('a[href*="#"]').on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate(
+        {
+            scrollTop: $($(this).attr('href')).offset().top,
+        },
+        500,
+        'linear'
+    );
+});
+
+// Vitamin data
+const vitaminData = {
+    'VITAMIN A': {
+        image: "{{ url_for('static', filename='images/vit a.jpg') }}",
+        description: "Vitamin A is a fat-soluble vitamin that plays a crucial role in maintaining vision, supporting the immune system, and ensuring proper organ function. It exists in two forms: preformed vitamin A (retinol) and provitamin A carotenoids.",
+        benefits: [
+            "Essential for maintaining healthy vision and preventing night blindness",
+            "Supports immune system function and helps fight infections",
+            "Promotes healthy skin and mucous membranes",
+            "Important for reproduction and fetal development",
+            "Supports bone growth and development",
+            "Acts as an antioxidant, protecting cells from damage"
+        ],
+        sources: [
+            "Animal sources: Liver, fish liver oils, milk, eggs",
+            "Plant sources: Carrots, sweet potatoes, spinach, kale",
+            "Fruits: Mangoes, cantaloupe, apricots",
+            "Fortified foods: Cereals, dairy products"
+        ],
+        requirement: {
+            daily: "Men: 900 mcg/day, Women: 700 mcg/day",
+            pregnancy: "770 mcg/day",
+            lactation: "1300 mcg/day",
+            children: "300-600 mcg/day (varies by age)"
+        },
+        deficiency: [
+            "Night blindness and vision problems",
+            "Dry, rough skin and hair",
+            "Increased susceptibility to infections",
+            "Poor wound healing",
+            "Growth retardation in children",
+            "Reproductive issues"
+        ],
+        toxicity: [
+            "Headaches and dizziness",
+            "Nausea and vomiting",
+            "Skin irritation",
+            "Bone pain and fractures",
+            "Liver damage (in severe cases)"
+        ],
+        color: "#FF6B6B" // Coral red
+    },
+    'VITAMIN B': {
+        image: "{{ url_for('static', filename='images/vit b.jpg') }}",
+        description: "The B-vitamin complex consists of eight water-soluble vitamins that play essential roles in cellular metabolism, energy production, and maintaining overall health. Each B vitamin has unique functions but often works synergistically.",
+        benefits: [
+            "Supports energy production and metabolism",
+            "Maintains healthy brain function and mental clarity",
+            "Promotes healthy skin, hair, and nails",
+            "Supports red blood cell formation",
+            "Helps maintain proper nerve function",
+            "Supports immune system health"
+        ],
+        sources: [
+            "Whole grains and fortified cereals",
+            "Meat, poultry, and fish",
+            "Dairy products and eggs",
+            "Legumes and nuts",
+            "Leafy green vegetables",
+            "Fruits like bananas and avocados"
+        ],
+        requirement: {
+            daily: "B1: 1.2mg, B2: 1.3mg, B3: 16mg, B6: 1.7mg, B12: 2.4mcg",
+            pregnancy: "Increased requirements for B6, B9, and B12",
+            lactation: "Higher needs for all B vitamins",
+            children: "Varies by age and specific B vitamin"
+        },
+        deficiency: [
+            "Fatigue and weakness",
+            "Anemia and pale skin",
+            "Nervous system disorders",
+            "Skin problems and mouth ulcers",
+            "Digestive issues",
+            "Mental confusion and depression"
+        ],
+        toxicity: [
+            "Generally low risk due to water solubility",
+            "High doses of B3 may cause flushing",
+            "Excessive B6 can cause nerve damage",
+            "B12 has no known toxicity level"
+        ],
+        color: "#4ECDC4" // Turquoise
+    },
+    'VITAMIN C': {
+        image: "{{ url_for('static', filename='images/vit c.jpg') }}",
+        description: "Vitamin C, also known as ascorbic acid, is a powerful antioxidant that plays a vital role in maintaining healthy skin, bones, and blood vessels. It's essential for collagen production and immune function.",
+        benefits: [
+            "Powerful antioxidant protection",
+            "Essential for collagen synthesis",
+            "Supports immune system function",
+            "Enhances iron absorption",
+            "Promotes wound healing",
+            "Supports cardiovascular health"
+        ],
+        sources: [
+            "Citrus fruits: Oranges, lemons, grapefruits",
+            "Berries: Strawberries, blueberries, raspberries",
+            "Vegetables: Bell peppers, broccoli, Brussels sprouts",
+            "Tropical fruits: Kiwi, guava, papaya",
+            "Leafy greens: Spinach, kale"
+        ],
+        requirement: {
+            daily: "Men: 90mg/day, Women: 75mg/day",
+            pregnancy: "85mg/day",
+            lactation: "120mg/day",
+            children: "15-75mg/day (varies by age)"
+        },
+        deficiency: [
+            "Scurvy (in severe cases)",
+            "Fatigue and weakness",
+            "Gum disease and tooth loss",
+            "Poor wound healing",
+            "Easy bruising",
+            "Joint pain and swelling"
+        ],
+        toxicity: [
+            "Generally well-tolerated",
+            "Diarrhea and digestive upset",
+            "Kidney stones (in susceptible individuals)",
+            "Iron overload (in people with hemochromatosis)"
+        ],
+        color: "#FFD166" // Yellow
+    },
+    'VITAMIN D': {
+        image: "{{ url_for('static', filename='images/vit d.jpg') }}",
+        description: "Vitamin D is a fat-soluble vitamin that plays a crucial role in calcium absorption and bone health. It's unique because it can be synthesized by the body through sunlight exposure.",
+        benefits: [
+            "Essential for calcium absorption",
+            "Supports bone health and strength",
+            "Modulates immune system function",
+            "May reduce risk of certain cancers",
+            "Supports muscle function",
+            "May help prevent autoimmune diseases"
+        ],
+        sources: [
+            "Sunlight exposure (primary source)",
+            "Fatty fish: Salmon, mackerel, tuna",
+            "Fortified dairy products",
+            "Egg yolks",
+            "Mushrooms exposed to UV light",
+            "Fortified cereals and orange juice"
+        ],
+        requirement: {
+            daily: "600-800 IU/day (15-20 mcg)",
+            pregnancy: "600 IU/day",
+            lactation: "600 IU/day",
+            children: "400-600 IU/day (varies by age)"
+        },
+        deficiency: [
+            "Rickets in children",
+            "Osteomalacia in adults",
+            "Bone pain and muscle weakness",
+            "Increased risk of fractures",
+            "Fatigue and depression",
+            "Impaired immune function"
+        ],
+        toxicity: [
+            "Hypercalcemia (high blood calcium)",
+            "Nausea and vomiting",
+            "Poor appetite and weight loss",
+            "Kidney damage",
+            "Heart rhythm abnormalities"
+        ],
+        color: "#06D6A0" // Mint green
+    },
+    'VITAMIN E': {
+        image: "{{ url_for('static', filename='images/vit e.jpeg') }}",
+        description: "Vitamin E is a powerful antioxidant that protects cells from damage and supports immune function. It exists in eight different forms, with alpha-tocopherol being the most active in humans.",
+        benefits: [
+            "Powerful antioxidant protection",
+            "Supports immune system function",
+            "Promotes healthy skin and eyes",
+            "May reduce risk of heart disease",
+            "Supports brain health",
+            "May help prevent age-related macular degeneration"
+        ],
+        sources: [
+            "Nuts and seeds: Almonds, sunflower seeds",
+            "Vegetable oils: Wheat germ, sunflower, safflower",
+            "Green leafy vegetables",
+            "Fortified cereals",
+            "Avocados",
+            "Shellfish"
+        ],
+        requirement: {
+            daily: "15mg/day for adults",
+            pregnancy: "15mg/day",
+            lactation: "19mg/day",
+            children: "6-11mg/day (varies by age)"
+        },
+        deficiency: [
+            "Nerve and muscle damage",
+            "Vision problems",
+            "Weakened immune system",
+            "Poor coordination",
+            "Muscle weakness",
+            "Reproductive problems"
+        ],
+        toxicity: [
+            "Generally rare",
+            "Increased bleeding risk",
+            "Nausea and diarrhea",
+            "Fatigue and weakness",
+            "Blurred vision"
+        ],
+        color: "#118AB2" // Blue
+    },
+    'VITAMIN K': {
+        image: "{{ url_for('static', filename='images/vit k.jpg') }}",
+        description: "Vitamin K is essential for blood clotting and bone health. It exists in two main forms: K1 (phylloquinone) from plants and K2 (menaquinone) from animal sources and gut bacteria.",
+        benefits: [
+            "Essential for blood clotting",
+            "Supports bone health and strength",
+            "May help prevent osteoporosis",
+            "Supports cardiovascular health",
+            "May help prevent calcification of arteries",
+            "Supports brain function"
+        ],
+        sources: [
+            "Green leafy vegetables: Kale, spinach, collards",
+            "Cruciferous vegetables: Broccoli, Brussels sprouts",
+            "Fermented foods: Natto, sauerkraut",
+            "Animal products: Liver, eggs, dairy",
+            "Vegetable oils",
+            "Fruits: Kiwi, avocado"
+        ],
+        requirement: {
+            daily: "120mcg/day, Women: 90mcg/day",
+            pregnancy: "90mcg/day",
+            lactation: "90mcg/day",
+            children: "30-75mcg/day (varies by age)"
+        },
+        deficiency: [
+            "Excessive bleeding",
+            "Easy bruising",
+            "Poor bone health",
+            "Increased risk of fractures",
+            "Calcification of soft tissues",
+            "Poor wound healing"
+        ],
+        toxicity: [
+            "Generally rare",
+            "May interfere with blood thinners",
+            "Jaundice in newborns",
+            "Anemia in severe cases"
+        ],
+        color: "#EF476F" // Pink
+    }
+};
+
+// Modal functionality
+const modal = document.getElementById('vitaminModal');
+const closeBtn = document.querySelector('.close-modal');
+
+// Add click event to all vitamin boxes
+document.querySelectorAll('.box').forEach(box => {
+    box.addEventListener('click', function() {
+        const vitaminName = this.querySelector('h3').textContent;
+        const data = vitaminData[vitaminName];
+        
+        if (data) {
+            document.getElementById('modalTitle').textContent = vitaminName;
+            document.getElementById('modalImage').src = data.image;
+            document.getElementById('modalDescription').textContent = data.description;
+            document.getElementById('modalBenefits').textContent = data.benefits.join(', ');
+            document.getElementById('modalSources').textContent = data.sources.join(', ');
+            document.getElementById('modalRequirement').textContent = data.requirement.daily;
+            document.getElementById('modalDeficiency').textContent = data.deficiency.join(', ');
+            document.getElementById('modalToxicity').textContent = data.toxicity.join(', ');
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Close modal
+closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Card click functionality
+$('.box').on('click', function() {
+    const vitaminName = $(this).find('h3').text();
+    const data = vitaminData[vitaminName];
+    
+    if (data) {
+        // Set modal color
+        document.documentElement.style.setProperty('--modal-color', data.color);
+        document.documentElement.style.setProperty('--modal-color-dark', shadeColor(data.color, -20));
+        
+        // Update modal content
+        $('#modalTitle').text(vitaminName);
+        $('#modalImage').attr('src', data.image);
+        $('#modalDescription').text(data.description);
+        $('#modalBenefits').text(data.benefits.join(', '));
+        $('#modalSources').text(data.sources.join(', '));
+        $('#modalDeficiency').text(data.deficiency.join(', '));
+        $('#modalToxicity').text(data.toxicity.join(', '));
+        
+        // Update requirements
+        const requirementsHtml = `
+            <div><strong>Daily:</strong> ${data.requirement.daily}</div>
+            <div><strong>Pregnancy:</strong> ${data.requirement.pregnancy}</div>
+            <div><strong>Lactation:</strong> ${data.requirement.lactation}</div>
+            <div><strong>Children:</strong> ${data.requirement.children}</div>
+        `;
+        $('#modalRequirement').html(requirementsHtml);
+        
+        // Show modal with animation
+        $('#vitaminModal').fadeIn(500, function() {
+            $('.modal-content').addClass('animate__animated animate__fadeInUp');
+            $('.detail-item').each(function(index) {
+                $(this).css('animation-delay', `${index * 0.1}s`).addClass('animate__animated animate__fadeInRight');
+            });
+        });
+        
+        $('body').css('overflow', 'hidden');
+    }
+});
+
+// Helper function to darken/lighten colors
+function shadeColor(color, percent) {
+    let R = parseInt(color.substring(1,3),16);
+    let G = parseInt(color.substring(3,5),16);
+    let B = parseInt(color.substring(5,7),16);
+
+    R = parseInt(R * (100 + percent) / 100);
+    G = parseInt(G * (100 + percent) / 100);
+    B = parseInt(B * (100 + percent) / 100);
+
+    R = (R<255)?R:255;  
+    G = (G<255)?G:255;  
+    B = (B<255)?B:255;  
+
+    R = Math.max(0,R).toString(16).padStart(2, '0');
+    G = Math.max(0,G).toString(16).padStart(2, '0');
+    B = Math.max(0,B).toString(16).padStart(2, '0');
+
+    return `#${R}${G}${B}`;
+}
+
+});
+
+    </script>
+
+    <style>
+    /* Add these new styles */
+    .box {
+        transition: all 0.3s ease;
+    }
+
+    .box img {
+        transition: all 0.3s ease;
+    }
+
+    .button {
+        transition: all 0.3s ease;
+    }
+
+    body {
+        transition: background-color 1s ease;
+    }
+
+    .animate__animated {
+        animation-duration: 1s;
+    }
+    </style>
+</body>
+
+</html>

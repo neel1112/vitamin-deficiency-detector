@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Hospital Website Design Tutorial</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+          /* google font   */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* root color  */
+:root{
+  --blue:#0188df;
+  --black:#444d53;
+  --wight:#fff;
+}
+
+/* custom css  */
+*{
+  font-family: "Roboto", sans-serif;
+  margin: 0; padding: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+  outline: none;
+  box-sizing: border-box;
+  transition: all linear .2s;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+/* button  */
+.button{
+  height: 3.5rem;
+  width: 15rem;
+  background: var(--blue);
+  color: var(--wight);
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  border-radius: .5rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: .1rem solid var(--blue);
+}
+
+.button:hover{
+  border: .1rem solid var(--blue);
+  background: var(--wight);
+  color: var(--blue);
+  letter-spacing: .2rem;
+}
+
+/* heading  */
+.heading{
+  text-align: center;
+  font-size: 4rem;
+  padding: 1rem;
+  padding-top: 8rem;
+  color: var(--blue);
+  letter-spacing: .1rem;
+}
+/* title  */
+.title{
+  text-align: center;
+  padding: 0rem 1rem;
+  font-size: 2.5rem;
+  color: var(--black);
+  font-weight: 300;
+}
+
+
+
+/* header navbar section start  */
+
+header{
+  width: 96%;
+  background: var(--wight);
+  position:fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+/* logo name  */
+header a{
+  color: var(--black);
+}
+
+header a:hover{
+  color: var(--blue);
+}
+
+header .logo{
+  font-size: 3rem;
+}
+
+header .logo span{
+  color: var(--blue);
+}
+
+/* navbar link  */
+header .navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header .navbar ul li{
+  margin: 0 1rem;
+}
+
+header .navbar ul li a{
+  font-size: 2rem;
+  color: var(--black);
+}
+
+header .navbar ul li a:hover{
+  color: var(--blue);
+}
+
+header .fa-bars{
+  font-size: 3rem;
+  color: var(--blue);
+  cursor: pointer;
+  display: none;
+}
+
+header .fa-times{
+  transform: rotate(180deg);
+}
+
+
+.header-active{
+  top: 0;
+  width: 100%;
+  box-shadow: .1rem .3rem rgba(0,0,0,.3);
+}
+
+
+
+/* header navbar section end  */
+
+/* home section start  */
+.home{
+  min-height: 100vh;
+  padding-top: 10rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.home .row{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* home images  */
+.home .row .images img{
+  height: 75vh;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* home heading  */
+.home .content h1{
+  font-size: 4.5rem;
+  color: var(--black);
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease;
+}
+
+.home .content h1 span{
+  color: var(--blue);
+  position: relative;
+  display: inline-block;
+}
+
+.home .content h1 span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--blue);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.home .content h1 span:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.home .content p{
+  font-size: 2rem;
+  color: var(--black);
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease 0.2s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.home .content .features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+  animation: fadeInUp 1s ease 0.4s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.home .content .features .feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.home .content .features .feature:hover {
+  transform: translateY(-5px);
+}
+
+.home .content .features .feature i {
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.home .content .features .feature p {
+  font-size: 1.6rem;
+  margin: 0;
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.button {
+  height: 4rem;
+  width: 18rem;
+  background: var(--blue);
+  color: var(--wight);
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  border-radius: 2.5rem;
+  cursor: pointer;
+  margin: 2rem 0;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease 0.6s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button:hover {
+  background: var(--wight);
+  color: var(--blue);
+  box-shadow: 0 0 20px rgba(1, 136, 223, 0.3);
+  transform: translateY(-3px);
+}
+
+/* home section end */
+
+/* vitamins carousel section start */
+.vitamins-carousel {
+    padding: 8rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(1,136,223,0.13);
+    border-radius: 2.5rem;
+    padding: 8rem 0 6rem 0;
+    margin-bottom: 3rem;
+}
+
+/* Add navigation buttons styles */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6rem;
+    height: 6rem;
+    background: var(--blue);
+    color: var(--wight);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.carousel-nav:hover {
+    background: var(--wight);
+    color: var(--blue);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.carousel-nav.prev {
+    left: 2rem;
+}
+
+.carousel-nav.next {
+    right: 2rem;
+}
+
+.carousel-nav:focus {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.carousel-container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+    border-radius: 2rem;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(1,136,223,0.07);
+    padding: 3rem 0;
+}
+
+.carousel-slide {
+    display: none;
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    perspective: 1000px;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    position: relative;
+    z-index: 2;
+}
+
+.vitamin-card {
+    background: var(--wight);
+    padding: 4rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(1, 136, 223, 0.1);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.vitamin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(1, 136, 223, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.vitamin-card:hover::before {
+    transform: translateX(100%);
+}
+
+.vitamin-card:hover {
+    transform: translateY(-10px) scale(1.02) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.vitamin-card i {
+    font-size: 5rem;
+    color: var(--blue);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.vitamin-card:hover i {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.vitamin-card h2 {
+    font-size: 3rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.vitamin-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--blue);
+    transition: width 0.3s ease;
+}
+
+.vitamin-card:hover h2::after {
+    width: 100px;
+}
+
+.vitamin-card p {
+    font-size: 1.8rem;
+    color: var(--black);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.vitamin-card ul {
+    list-style: none;
+    text-align: left;
+    padding: 0 2rem;
+}
+
+.vitamin-card ul li {
+    font-size: 1.6rem;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    padding-left: 3rem;
+    position: relative;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.vitamin-card ul li:hover {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.vitamin-card ul li:before {
+    content: "→";
+    color: var(--blue);
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.vitamin-card ul li:hover:before {
+    transform: translateX(5px);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 2rem;
+}
+
+.dot {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: #b3e0fc;
+    border: 2px solid var(--blue);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.dot::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: rgba(1, 136, 223, 0.1);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.dot:hover::before {
+    transform: scale(1);
+}
+
+.dot.active {
+    background: var(--blue);
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px var(--blue);
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.95);
+    }
+}
+
+.carousel-slide.sliding-in {
+    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.carousel-slide.sliding-out {
+    animation: slideOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@media (max-width: 768px) {
+    .vitamins-carousel {
+        padding: 4rem 0;
+        border-radius: 1.2rem;
+        padding: 3rem 0 2rem 0;
+    }
+    
+    .carousel-container {
+        width: 95%;
+        padding: 1.2rem 0;
+        border-radius: 1rem;
+    }
+    
+    .vitamin-card {
+        padding: 2rem;
+    }
+    
+    .vitamin-card h2 {
+        font-size: 2.5rem;
+    }
+    
+    .vitamin-card p {
+        font-size: 1.5rem;
+    }
+    
+    .vitamin-card ul li {
+        font-size: 1.4rem;
+    }
+    
+    .carousel-nav {
+        width: 4rem;
+        height: 4rem;
+        font-size: 2rem;
+    }
+    
+    .carousel-nav.prev {
+        left: 1rem;
+    }
+    
+    .carousel-nav.next {
+        right: 1rem;
+    }
+    
+    .dot {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+}
+/* vitamins carousel section end */
+
+/* about section start  */
+.about{
+  background-color: #f9f9f9;
+}
+
+.about .box-container{
+  padding: 4rem 0;
+}
+
+.about .box-container .box{
+  width: 75%;
+  margin: 4rem auto;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--wight);
+}
+
+/* about images  */
+.about .box-container .box .images{
+  height: 40rem;
+  width: 50%;
+}
+
+.about .box-container .box .images img{
+  height: 100%;
+  width: 100%;
+}
+
+/* about heading & text */
+.about .box-container .box .content{
+  height: 100%;
+  width: 50%;
+  padding: 2rem;
+}
+
+.about .box-container .box .content h3{
+  font-size: 3rem;
+  color: var(--blue);
+  display: flex;
+  align-items: start;
+}
+
+.about .box-container .box .content p{
+  font-size: 1.5rem;
+  color: var(--black);
+  padding: 1rem 0;
+  text-align: start;
+}
+
+.about .box-container .box:nth-child(even){
+  flex-flow: row-reverse;
+}
+
+
+ /* about section end  */
+
+/* card section start  */
+
+.card .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card .box-container .box{
+  width: 30rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* card images  */
+.card .box-container .box img{
+  height: 30rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card .box-container .box .content{
+  padding: 1rem 1.3rem;
+}
+
+.card .box-container .box .content h2{
+  font-size: 2rem ;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content h2:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.card .box-container .box .content p{
+  font-size: 1.7rem;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content .icons{
+  text-align: center;
+}
+
+.card .box-container .box .content .icons a{
+  font-size: 2rem;
+  color: var(--blue);
+  text-align: center;
+  margin: 1rem;
+}
+/* card section end  */
+
+/* review section start  */
+.review .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.review .box-container .box{
+  width: 35rem;
+  text-align: center;
+  padding: 0 2rem;
+  margin: 4rem 1.5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* images  */
+.review .box-container .box .images{
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: .5rem 0;
+  border-top: .1rem solid #333;
+}
+
+.review .box-container .box .images img{
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: .8rem 1rem;
+}
+
+.review .box-container .box i{
+  font-size: 6rem ;
+  margin-top: -3rem;
+  color: var(--blue);
+  opacity: .4;
+}
+
+
+.review .box-container .box p{
+  color: var(--black);
+  font-size: 1.7rem;
+  padding: 2rem 0;
+}
+
+.review .box-container .box .info h3{
+  color: var(--blue);
+  font-size: 2rem;
+}
+.review .box-container .box .info span{
+  color: var(--black);
+  font-size: 2rem;
+}
+/* review section end */
+
+/* contact section start  */
+.contact{
+  background: #eee;
+}
+
+.contact .row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+}
+
+.contact .row .images img{
+  width: 50vw;
+  height: 70vh;
+}
+
+.contact .row  .form-container{
+  width: 50%;
+  padding-right: 6rem;
+}
+
+.contact .row  .form-container input, textarea{
+  height: 4rem;
+  width: 100%;
+  background: var(--wight);
+  border: none;
+  border-radius: 5rem;
+  padding: 0 1rem;
+  margin: 1rem 0;
+  color: var(--blue);
+  font-size: 1.7rem;
+}
+
+.contact .row  .form-container input:focus , textarea:focus{
+  border: .2rem solid var(--blue);
+}
+
+.contact .row  .form-container textarea{
+  height: 20rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  resize: none;
+}
+
+.contact .row  .form-container input[type="submit"]{
+  width: 17rem;
+  background: var(--blue);
+  color: var(--wight);
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.contact .row  .form-container input[type="submit"]:hover{
+  background: var(--wight);
+  color: var(--blue);
+  border: .2rem solid var(--blue);
+}
+/* contact section end  */
+
+/* bolg section start  */
+.blog .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.blog .box-container .box{
+  width: 35rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* blog images  */
+.blog .box-container .box img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.blog .box-container .box .content{
+  padding: 0 1.5rem;
+}
+
+.blog .box-container .box .content h2{
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.blog .box-container .box .content p{
+  font-size: 1.3rem;
+  color: var(--black);
+}
+/* bolg section end  */
+
+/* footer section start  */
+.footer{
+  background: var(--wight);
+  box-shadow: 0 -2px 16px rgba(1,136,223,0.07);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2.5rem 0 0.5rem 0;
+  border-top: 2px solid #e6f3ff;
+}
+
+.footer .box{
+  width: 30rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+.footer .box:nth-child(1){
+  text-align: left;
+}
+
+.footer .box .logo{
+  padding: 2rem 0 1rem 0;
+  font-size: 3rem;
+  color: var(--black);
+  transition: color 0.2s;
+}
+.footer .box .logo:hover{
+  color: var(--blue);
+}
+.footer .box .logo span{
+  color: var(--blue);
+}
+.footer .box p{
+  font-size: 1.5rem;
+  color: var(--black);
+}
+.footer .box a{
+  color: var(--black);
+  font-size: 2rem;
+  display: block;
+  padding: .2rem 0;
+  transition: color 0.2s;
+}
+.footer .box a:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+.footer .credit{
+  width: 85%;
+  padding-top: 1rem;
+  font-size: 2rem;
+  color: var(--black);
+  text-align: center;
+  border-top: .2rem solid #e6f3ff;
+  margin-top: 1.5rem;
+}
+.footer .credit span{
+  color: var(--blue);
+  text-decoration: underline;
+  letter-spacing: .5rem;
+}
+/* footer section end  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media query  */
+
+@media (max-width:768px){
+
+  html{
+      font-size: 55%;
+  }
+
+  header .fa-bars{
+      display: block;
+  }
+  
+  header .navbar{
+      position: fixed;
+      top: -100rem; left: 0;
+      width: 100%;
+      background: var(--wight);
+      opacity: 0;
+  }
+
+  header .navbar ul{
+      flex-flow: column;
+      padding: 2rem 0;
+  }
+
+  header .navbar ul li{
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+  }
+
+  header .navbar ul li a{
+      font-size: 3rem;
+      display: block;
+  }
+
+  header .nav-toggle{
+      top: 5.5rem;
+      opacity: 1;
+  }
+
+  /* home media query  */
+
+  .home .row{
+      flex-flow: column;
+  }
+
+  .home .row .content{
+      text-align: center;
+  }
+
+  /* home images  */
+  .home .row .images img{
+      width: 100%;
+  }
+
+/* about media query  */
+ .about .box-container .box{
+  flex-flow: column;
+  width: 90%;
+ }
+
+ .about .box-container .box:nth-child(even){
+  flex-flow: column;
+ }
+
+ .about .box-container .box .images{
+  width: 100%;
+ }
+
+ .about .box-container .box .content{
+  width: 100%;
+ }
+ 
+ /* contact form  */
+ .contact .row{
+  flex-flow: column;
+ }
+
+ .contact .row .images img{
+  height: 50vh;
+  width: 90vw;
+ }
+
+ .contact .row .form-container{
+  width: 90%;
+  padding: 0;
+ }
+}
+
+.custom-slider {
+  width: 200px;
+  height: 15px;
+ 
+  background: #d3d3d3;
+  outline: none;
+  border-radius: 15px;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+  border-radius: 50%;
+}
+    </style>
+</head>
+
+<body>
+
+
+    <!-- header navbar section start  -->
+
+    <header>
+
+        <!-- logo name  -->
+        <a href="http://127.0.0.1:5000/" class="logo"> <h2 class="logo"><span>v</span>ita <span>C</span>ares</h2></a>
+
+        <!-- navbar link  -->
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/vita">vitamins</a></li>
+                <li><a href="/diseases">diseases</a></li>
+                <li><a href="/predict">check vitamins</a></li>
+                <li><a href="/contact">contact</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="fas fa-bars"></div>
+    </header>
+    <!-- header navbar section end  -->
+
+    <!-- home section start  -->
+
+    <section id="home" class="home">
+        <div class="row">
+            <!-- home images  -->
+            <div class="images">
+                <img src="{{ url_for('static', filename='images/home.png') }}" class="w-100" alt="">
+            </div>
+
+            <!-- home heading  -->
+            <div class="content">
+                <h1><span>Unlock</span> Your <span>Wellness</span> Potential</h1>
+                <p>Empower your health journey with VitaCares—personalized insights, expert support, and the best in nutrition, all in one place.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-user-check"></i>
+                        <p>Tailored Vitamin Analysis for You</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart-pulse"></i>
+                        <p>Track Your Health Effortlessly</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-capsules"></i>
+                        <p>Smart Supplement Suggestions</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-nurse"></i>
+                        <p>Guidance from Trusted Experts</p>
+                    </div>
+                </div>
+
+                <a href="https://www.trilife.in/blog/the-power-of-topical-vitamins-in-dermatology-a-comprehensive-guide/#:~:text=Common%20Skin%20Concerns%20and%20the%20Role%20of%20Topical%20Vitamins&text=Fine%20Lines%20and%20Wrinkles%3A%20Niacinamide,%2C%20more%20youthful%2Dlooking%20skin.">
+                    <button class="button">Start Your Journey</button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- home section end  -->
+
+    <!-- vitamins carousel section start -->
+    <section class="vitamins-carousel">
+        <button class="carousel-nav prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-nav next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+        <div class="carousel-container" aria-live="polite" aria-atomic="true">
+            <div class="carousel-slide">
+                <div class="vitamin-card">
+                    <i class="fas fa-carrot" aria-label="Vitamin A"></i>
+                    <h2>Vitamin A</h2>
+                    <p>Supports healthy vision, immunity, and cell growth. Found in carrots, sweet potatoes, and leafy greens.</p>
+                    <ul>
+                        <li>Enhances night vision</li>
+                        <li>Boosts immune response</li>
+                        <li>Promotes radiant skin</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="vitamin-card">
+                    <i class="fas fa-seedling" aria-label="Vitamin B Complex"></i>
+                    <h2>Vitamin B</h2>
+                    <p>A group of nutrients vital for energy, brain function, and cell metabolism. Includes B1, B2, B3, B6, B12.</p>
+                    <ul>
+                        <li>Converts food into energy</li>
+                        <li>Maintains nervous system health</li>
+                        <li>Supports red blood cell production</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="vitamin-card">
+                    <i class="fas fa-lemon" aria-label="Vitamin C"></i>
+                    <h2>Vitamin C</h2>
+                    <p>A powerful antioxidant for immune defense and collagen formation. Found in citrus fruits and berries.</p>
+                    <ul>
+                        <li>Strengthens immunity</li>
+                        <li>Promotes collagen synthesis</li>
+                        <li>Improves iron absorption</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="vitamin-card">
+                    <i class="fas fa-sun" aria-label="Vitamin D"></i>
+                    <h2>Vitamin D</h2>
+                    <p>The “sunshine vitamin” crucial for bone strength and calcium balance. Get it from sunlight and fortified foods.</p>
+                    <ul>
+                        <li>Builds strong bones</li>
+                        <li>Helps absorb calcium</li>
+                        <li>Supports immune health</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="vitamin-card">
+                    <i class="fas fa-leaf" aria-label="Vitamin E"></i>
+                    <h2>Vitamin E</h2>
+                    <p>Antioxidant that shields cells and nourishes skin. Found in nuts, seeds, and green veggies.</p>
+                    <ul>
+                        <li>Protects cells from damage</li>
+                        <li>Improves skin health</li>
+                        <li>Strengthens immune system</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="vitamin-card">
+                    <i class="fas fa-heart" aria-label="Vitamin K"></i>
+                    <h2>Vitamin K</h2>
+                    <p>Essential for blood clotting and bone vitality. Found in leafy greens and broccoli.</p>
+                    <ul>
+                        <li>Enables healthy blood clotting</li>
+                        <li>Supports bone strength</li>
+                        <li>Contributes to heart health</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-dots" aria-label="Slide indicators" role="tablist"></div>
+    </section>
+    <!-- vitamins carousel section end -->
+
+    <!-- about section start  -->
+
+
+    <!-- about section end  -->
+    
+    <!-- card section start  -->
+
+ 
+
+
+    <!-- blog section end  -->
+
+    <!-- footer section start  -->
+
+    <section class="footer">
+        <div class="box">
+            <h2 class="logo"><span>D</span>octors <span>C</span>ares</h2>
+            <p>A doctor cares for patients by diagnosing illnesses, providing treatments, and guiding them toward better health. Doctors work tirelessly to heal and comfort those in need, making a significant impact on people's lives.</p>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>S</span>hare</h2>
+            <a href="#">facebook</a>
+            <a href="#">twitter</a>
+            <a href="#">instagram</a>
+            <a href="#">pinterest</a>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>L</span>inks</h2>
+            <a href="/">home</a>
+            <a href="/about">about</a>
+            <a href="#">Doctor</a>
+            <a href="#">Review</a>
+            <a href="/contact">contact</a>
+            <a href="#">blog</a>
+        </div>
+
+        <h1 class="credit">created by <span>Neel Merja & Krishna Modhavadiya</span> all right reserved.</h1>
+    </section>
+
+    <!-- footer section end  -->
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <!-- jquery cdn link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script>
+        //   navbar function 
+$(document).ready(function(){
+    // Navbar functionality
+    $('.fa-bars').click(function(){
+        $(this).toggleClass('fa-times');
+        $('.navbar').toggleClass('nav-toggle');
+    });
+
+    $(window).on('scroll load', function(){
+        $('.fa-bars').removeClass('fa-times');
+        $('.navbar').removeClass('nav-toggle');
+
+        if($(window).scrollTop() > 30){
+            $('header').addClass('header-active');
+        }else{
+            $('header').removeClass('header-active');
+        }
+    });
+
+    // Vitamins Carousel functionality
+    const slides = $('.carousel-slide');
+    let currentSlide = 0;
+    let isAnimating = false;
+    const slideInterval = 5000; // Change slide every 5 seconds
+
+    // Show first slide with animation
+    slides.first().addClass('active').css({
+        'opacity': '1',
+        'transform': 'translateX(0)'
+    });
+
+    // Function to show slide with smooth transition
+    function showSlide(index) {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const currentActiveSlide = slides.eq(currentSlide);
+        const nextSlide = slides.eq(index);
+        
+        // Add sliding classes
+        currentActiveSlide.addClass('sliding-out');
+        nextSlide.addClass('sliding-in');
+
+        // Handle the transition
+        setTimeout(() => {
+            currentActiveSlide.removeClass('active sliding-out').css({
+                'display': 'none',
+                'opacity': '0',
+                'transform': 'translateX(100%) scale(0.95)'
+            });
+            
+            nextSlide.removeClass('sliding-in').addClass('active');
+            
+            // Reset animation state
+            isAnimating = false;
+        }, 600);
+
+        currentSlide = index;
+    }
+
+    // Function to go to next slide
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    // Function to go to previous slide
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+    }
+
+    // Auto slide with pause on hover
+    let slideTimer = setInterval(nextSlide, slideInterval);
+
+    $('.vitamins-carousel').hover(
+        function() {
+            clearInterval(slideTimer);
+            $(this).addClass('paused');
+        },
+        function() {
+            slideTimer = setInterval(nextSlide, slideInterval);
+            $(this).removeClass('paused');
+        }
+    );
+
+    // Add navigation button click handlers
+    $('.carousel-nav.prev').click(function() {
+        prevSlide();
+    });
+
+    $('.carousel-nav.next').click(function() {
+        nextSlide();
+    });
+
+    // Add keyboard navigation
+    $(document).keydown(function(e) {
+        if (e.keyCode === 37) { // Left arrow
+            prevSlide();
+        } else if (e.keyCode === 39) { // Right arrow
+            nextSlide();
+        }
+    });
+
+    // Add touch swipe support
+    let touchStartX = 0;
+    let touchStartTime = 0;
+    let touchEndX = 0;
+    let touchEndTime = 0;
+
+    $('.carousel-container').on('touchstart', function(e) {
+        touchStartX = e.originalEvent.touches[0].pageX;
+        touchStartTime = Date.now();
+    });
+
+    $('.carousel-container').on('touchend', function(e) {
+        touchEndX = e.originalEvent.changedTouches[0].pageX;
+        touchEndTime = Date.now();
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const timeThreshold = 300; // milliseconds
+        const diff = touchStartX - touchEndX;
+        const timeDiff = touchEndTime - touchStartTime;
+
+        if (Math.abs(diff) > swipeThreshold && timeDiff < timeThreshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    }
+
+    // Add smooth scroll behavior
+    $('html').css('scroll-behavior', 'smooth');
+
+    // Add parallax effect to vitamin cards
+    $(window).scroll(function() {
+        const scrolled = $(window).scrollTop();
+        $('.vitamin-card').css('transform', `translateY(${scrolled * 0.1}px)`);
+    });
+
+    // Smooth scroll for navigation links
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this.hash);
+        if (target.length) {
+            $('html, body').animate({
+                scrollTop: target.offset().top - 80
+            }, 800);
+        }
+    });
+
+    // Animate elements on scroll
+    $(window).scroll(function() {
+        $('.feature, .stats .box, .services .box').each(function() {
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+
+            if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                $(this).addClass('animate');
+            }
+        });
+    });
+
+    // Add hover effect to features and services
+    $('.feature, .services .box').hover(
+        function() {
+            $(this).find('i').addClass('fa-bounce');
+        },
+        function() {
+            $(this).find('i').removeClass('fa-bounce');
+        }
+    );
+
+    // Newsletter form submission
+    $('.newsletter form').on('submit', function(e) {
+        e.preventDefault();
+        var email = $(this).find('input[type="email"]').val();
+        if(email) {
+            alert('Thank you for subscribing!');
+            $(this).find('input[type="email"]').val('');
+        }
+    });
+
+    // Counter animation for stats
+    $('.stats .box h3').each(function() {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 2000,
+            easing: 'swing',
+            step: function(now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+});
+    </script>
+
+ 
+
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/05/09/20250205095716-4K0TQ7NK.js"></script>
+        
+    
+</body>
+
+</html>

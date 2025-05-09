@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Submissions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+            background-attachment: fixed;
+        }
+        .glass-card {
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15), 0 1.5px 8px 0 rgba(67, 206, 162, 0.07);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            padding: 36px 36px 28px 36px;
+            width: 95%;
+            max-width: 1100px;
+            margin: 48px auto 0 auto;
+            transition: box-shadow 0.2s;
+        }
+        .glass-card:hover {
+            box-shadow: 0 12px 36px 0 rgba(31, 38, 135, 0.20), 0 3px 16px 0 rgba(67, 206, 162, 0.11);
+        }
+        .controls {
+            width:100%;
+            margin:0 auto 32px auto;
+            display:flex;
+            gap:16px;
+            align-items:center;
+            justify-content: center;
+            background: rgba(245,245,255,0.7);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px 0 rgba(67, 206, 162, 0.03);
+            padding: 18px 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        #searchBar, select {
+            padding:12px 14px;
+            border-radius:8px;
+            border:1.5px solid #d1d5db;
+            outline:none;
+            font-size:1rem;
+            font-family: inherit;
+            transition: border 0.2s, box-shadow 0.2s;
+            background: #f8fafc;
+            box-shadow: 0 1px 2px 0 rgba(31,38,135,0.03);
+        }
+        #searchBar:focus, select:focus {
+            border:1.5px solid #6366f1;
+            box-shadow: 0 0 0 2px #6366f133;
+        }
+        #refreshBtn {
+            padding:12px 26px;
+            background: linear-gradient(90deg, #6366f1 0%, #43cea2 100%);
+            color:#fff;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:1rem;
+            font-weight: 600;
+            font-family: inherit;
+            box-shadow: 0 2px 8px 0 rgba(67, 206, 162, 0.08);
+            transition: background 0.2s, transform 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #refreshBtn i { font-size: 1.1em; }
+        #refreshBtn:hover {
+            background: linear-gradient(90deg, #43cea2 0%, #6366f1 100%);
+            transform: translateY(-2px) scale(1.045);
+        }
+        h1 {
+            text-align: center;
+            color: #6366f1;
+            margin-top: 0;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+        h1 i { color: #43cea2; font-size: 1.2em; }
+        a {
+            display: block;
+            text-align: center;
+            margin: 12px auto 28px auto;
+            color: #6366f1;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #43cea2;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            background: transparent;
+            margin-top: 0;
+        }
+        th, td {
+            border: none;
+            padding: 15px 14px;
+            text-align: left;
+        }
+        th {
+            background: linear-gradient(90deg, #6366f1 0%, #43cea2 100%);
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 70px;
+            z-index: 2;
+        }
+        td {
+            background: rgba(240, 248, 255, 0.92);
+            color: #222;
+            border-bottom: 1px solid #e3e9f7;
+            animation: fadeIn 0.7s;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr {
+            transition: box-shadow 0.2s, transform 0.12s;
+        }
+        tr:hover td {
+            background: #e0e7ef;
+            box-shadow: 0 2px 10px 0 #6366f133;
+            transform: scale(1.01);
+            transition: background 0.3s, box-shadow 0.2s, transform 0.12s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: none; }
+        }
+        @media (max-width: 700px) {
+            .glass-card {padding: 10px 2px;}
+            .controls {flex-direction: column;gap:10px;}
+            table, th, td {font-size:0.95rem;}
+            th {top: 120px;}
+        }
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            background-color: rgba(99,102,241,0.3);
+            pointer-events: none;
+        }
+        @keyframes ripple {
+            to {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #6366f1 0%, #43cea2 100%);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 24px 0 #6366f144;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transition: opacity 0.4s, bottom 0.4s;
+        }
+        .toast.show {
+            opacity: 1;
+            bottom: 70px;
+        }
+        /* Highlighted text */
+        .highlight {
+            background: #fffb91;
+            color: #222;
+            border-radius: 3px;
+            padding: 0 2px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1><i class="fa-solid fa-table-list"></i> Contact Form Submissions</h1>
+        <a href="/contact"><i class="fa-solid fa-arrow-left"></i> Back to Contact Form</a>
+        <div class="controls">
+            <input type="text" id="searchBar" placeholder="Search..." style="flex:2;">
+            <select id="nameFilter" style="flex:1;"></select>
+            <select id="emailFilter" style="flex:1;"></select>
+            <select id="phoneFilter" style="flex:1;"></select>
+            <button id="refreshBtn"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+        </div>
+        <table id="submissionsTable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script>
+    const submissions = {{ submissions|tojson }};
+
+    const searchBar = document.getElementById('searchBar');
+    const nameFilter = document.getElementById('nameFilter');
+    const emailFilter = document.getElementById('emailFilter');
+    const phoneFilter = document.getElementById('phoneFilter');
+    const tableBody = document.getElementById('tableBody');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const toast = document.getElementById('toast');
+    const card = document.querySelector('.glass-card');
+
+    function getUnique(arr, key) {
+        return [...new Set(arr.map(item => item[key]))];
+    }
+
+    refreshBtn.addEventListener('click', function(e) {
+        const rect = refreshBtn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        document.body.appendChild(ripple);
+        const size = Math.max(refreshBtn.offsetWidth, refreshBtn.offsetHeight);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size/2 + rect.left + window.scrollX) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size/2 + rect.top + window.scrollY) + 'px';
+        setTimeout(() => ripple.remove(), 600);
+        showToast('Table refreshed!');
+        setTimeout(() => { window.location.reload(); }, 400);
+    });
+
+    function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function populateFilters() {
+        const names = getUnique(submissions, 'name');
+        const emails = getUnique(submissions, 'email');
+        const phones = getUnique(submissions, 'phone');
+        nameFilter.innerHTML = '<option value="">All Names</option>' + names.map(n => `<option value="${n}">${n}</option>`).join('');
+        emailFilter.innerHTML = '<option value="">All Emails</option>' + emails.map(e => `<option value="${e}">${e}</option>`).join('');
+        phoneFilter.innerHTML = '<option value="">All Phones</option>' + phones.map(p => `<option value="${p}">${p}</option>`).join('');
+    }
+
+    function highlight(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    function renderTable(data, query) {
+        tableBody.innerHTML = '';
+        data.forEach((entry, idx) => {
+            const row = document.createElement('tr');
+            row.style.opacity = 0;
+            row.style.transform = 'translateY(24px)';
+            setTimeout(() => {
+                row.style.transition = 'opacity 0.5s, transform 0.5s';
+                row.style.opacity = 1;
+                row.style.transform = 'none';
+            }, 80 * idx);
+            row.innerHTML = `
+                <td>${highlight(entry.name, query)}</td>
+                <td>${highlight(entry.email, query)}</td>
+                <td>${highlight(entry.phone, query)}</td>
+                <td>${highlight(entry.message, query)}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function filterTable() {
+        const search = searchBar.value.trim().toLowerCase();
+        const name = nameFilter.value;
+        const email = emailFilter.value;
+        const phone = phoneFilter.value;
+        let filtered = submissions.filter(entry => {
+            let match = true;
+            if (name && entry.name !== name) match = false;
+            if (email && entry.email !== email) match = false;
+            if (phone && entry.phone !== phone) match = false;
+            const rowText = `${entry.name} ${entry.email} ${entry.phone} ${entry.message}`.toLowerCase();
+            if (search && !rowText.includes(search)) match = false;
+            return match;
+        });
+        renderTable(filtered, search);
+        document.querySelector('.glass-card').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    searchBar.addEventListener('input', filterTable);
+    nameFilter.addEventListener('change', filterTable);
+    emailFilter.addEventListener('change', filterTable);
+    phoneFilter.addEventListener('change', filterTable);
+
+    populateFilters();
+    renderTable(submissions, '');
+    </script>
+</body>
+</html>

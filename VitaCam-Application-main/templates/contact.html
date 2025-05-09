@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+          /* google font   */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* root color  */
+:root{
+  --blue:#0188df;
+  --black:#444d53;
+  --wight:#fff;
+}
+
+/* custom css  */
+*{
+  font-family: "Roboto", sans-serif;
+  margin: 0; padding: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+  outline: none;
+  box-sizing: border-box;
+  transition: all linear .2s;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+/* button  */
+.button{
+  height: 3.5rem;
+  width: 15rem;
+  background: var(--blue);
+  color: var(--wight);
+  font-size: 1.7rem;
+  text-transform: capitalize;
+  border-radius: .5rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  border: .1rem solid var(--blue);
+}
+
+.button:hover{
+  border: .1rem solid var(--blue);
+  background: var(--wight);
+  color: var(--blue);
+  letter-spacing: .2rem;
+}
+
+/* heading  */
+.heading{
+  text-align: center;
+  font-size: 4rem;
+  padding: 1rem;
+  padding-top: 8rem;
+  color: var(--blue);
+  letter-spacing: .1rem;
+}
+/* title  */
+.title{
+  text-align: center;
+  padding: 0rem 1rem;
+  font-size: 2.5rem;
+  color: var(--black);
+  font-weight: 300;
+}
+
+
+
+/* header navbar section start  */
+
+header{
+  width: 96%;
+  background: var(--wight);
+  position:fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+/* logo name  */
+header a{
+  color: var(--black);
+}
+
+header a:hover{
+  color: var(--blue);
+}
+
+header .logo{
+  font-size: 3rem;
+}
+
+header .logo span{
+  color: var(--blue);
+}
+
+/* navbar link  */
+header .navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+header .navbar ul li{
+  margin: 0 1rem;
+}
+
+header .navbar ul li a{
+  font-size: 2rem;
+  color: var(--black);
+}
+
+header .navbar ul li a:hover{
+  color: var(--blue);
+}
+
+header .fa-bars{
+  font-size: 3rem;
+  color: var(--blue);
+  cursor: pointer;
+  display: none;
+}
+
+header .fa-times{
+  transform: rotate(180deg);
+}
+
+
+.header-active{
+  top: 0;
+  width: 100%;
+  box-shadow: .1rem .3rem rgba(0,0,0,.3);
+}
+
+
+
+/* header navbar section end  */
+
+/* home section start  */
+
+.home{
+  min-height: 100vh;
+  padding-top: 10rem;
+}
+
+.home .row{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* home images  */
+.home .row .images img{
+  height: 75vh;
+}
+
+/* home heading  */
+.home .content h1{
+  font-size: 4rem;
+  color: var(--black);
+}
+
+.home .content h1 span{
+  color: var(--blue);
+}
+
+.home .content p{
+  font-size: 1.9rem;
+  color: var(--black);
+}
+
+
+/* home section end  */
+
+
+/* about section start  */
+.about{
+  background-color: #f9f9f9;
+}
+
+.about .box-container{
+  padding: 4rem 0;
+}
+
+.about .box-container .box{
+  width: 75%;
+  margin: 4rem auto;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--wight);
+}
+
+/* about images  */
+.about .box-container .box .images{
+  height: 40rem;
+  width: 50%;
+}
+
+.about .box-container .box .images img{
+  height: 100%;
+  width: 100%;
+}
+
+/* about heading & text */
+.about .box-container .box .content{
+  height: 100%;
+  width: 50%;
+  padding: 2rem;
+}
+
+.about .box-container .box .content h3{
+  font-size: 3rem;
+  color: var(--blue);
+  display: flex;
+  align-items: start;
+}
+
+.about .box-container .box .content p{
+  font-size: 1.5rem;
+  color: var(--black);
+  padding: 1rem 0;
+  text-align: start;
+}
+
+.about .box-container .box:nth-child(even){
+  flex-flow: row-reverse;
+}
+
+
+ /* about section end  */
+
+/* card section start  */
+
+.card .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card .box-container .box{
+  width: 30rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* card images  */
+.card .box-container .box img{
+  height: 30rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card .box-container .box .content{
+  padding: 1rem 1.3rem;
+}
+
+.card .box-container .box .content h2{
+  font-size: 2rem ;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content h2:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.card .box-container .box .content p{
+  font-size: 1.7rem;
+  text-align: center;
+  color: var(--black);
+}
+
+.card .box-container .box .content .icons{
+  text-align: center;
+}
+
+.card .box-container .box .content .icons a{
+  font-size: 2rem;
+  color: var(--blue);
+  text-align: center;
+  margin: 1rem;
+}
+/* card section end  */
+
+/* review section start  */
+.review .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.review .box-container .box{
+  width: 35rem;
+  text-align: center;
+  padding: 0 2rem;
+  margin: 4rem 1.5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* images  */
+.review .box-container .box .images{
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: .5rem 0;
+  border-top: .1rem solid #333;
+}
+
+.review .box-container .box .images img{
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: .8rem 1rem;
+}
+
+.review .box-container .box i{
+  font-size: 6rem ;
+  margin-top: -3rem;
+  color: var(--blue);
+  opacity: .4;
+}
+
+
+.review .box-container .box p{
+  color: var(--black);
+  font-size: 1.7rem;
+  padding: 2rem 0;
+}
+
+.review .box-container .box .info h3{
+  color: var(--blue);
+  font-size: 2rem;
+}
+.review .box-container .box .info span{
+  color: var(--black);
+  font-size: 2rem;
+}
+/* review section end */
+
+/* contact section start  */
+.contact{
+  background: #eee;
+}
+
+.contact .contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 4rem auto 0 auto;
+    padding: 2.5rem 1.5rem;
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 32px rgba(1,136,223,0.10), 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.contact .contact-section .contact-image {
+    flex: 1 1 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+}
+
+.contact .contact-section .contact-image img {
+    max-width: 320px;
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px rgba(1,136,223,0.07);
+}
+
+.contact .contact-section .contact-form {
+    flex: 2 1 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 260px;
+}
+
+.contact .contact-section .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.contact .contact-section .contact-form input[type="text"],
+.contact .contact-section .contact-form input[type="email"],
+.contact .contact-section .contact-form input[type="number"],
+.contact .contact-section .contact-form textarea {
+    border: 1.5px solid #e0e0e0;
+    border-radius: .5rem;
+    padding: 1.1rem 1.2rem;
+    font-size: 1.6rem;
+    background: #fafcff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+}
+
+.contact .contact-section .contact-form input:focus,
+.contact .contact-section .contact-form textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(1,136,223,0.08);
+    outline: none;
+}
+
+.contact .contact-section .contact-form input[type="submit"] {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.contact .contact-section .contact-form input[type="submit"]:hover {
+    background: #005fa3;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .contact .contact-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2.5rem;
+    }
+    .contact .contact-section .contact-image,
+    .contact .contact-section .contact-form {
+        min-width: 0;
+    }
+    .contact .contact-section .contact-image img {
+        max-width: 100%;
+    }
+}
+/* contact section end  */
+
+/* bolg section start  */
+.blog .box-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.blog .box-container .box{
+  width: 35rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  box-shadow: 0 .3rem .5rem rgba(0,0,0,.3);
+}
+
+/* blog images  */
+.blog .box-container .box img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.blog .box-container .box .content{
+  padding: 0 1.5rem;
+}
+
+.blog .box-container .box .content h2{
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.blog .box-container .box .content p{
+  font-size: 1.3rem;
+  color: var(--black);
+}
+/* bolg section end  */
+
+/* footer section start  */
+.footer{
+  background: var(--wight);
+  box-shadow: 0 -2px 16px rgba(1,136,223,0.07);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2.5rem 0 0.5rem 0;
+  border-top: 2px solid #e6f3ff;
+}
+
+.footer .box{
+  width: 30rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+.footer .box:nth-child(1){
+  text-align: left;
+}
+
+.footer .box .logo{
+  padding: 2rem 0 1rem 0;
+  font-size: 3rem;
+  color: var(--black);
+  transition: color 0.2s;
+}
+.footer .box .logo:hover{
+  color: var(--blue);
+}
+.footer .box .logo span{
+  color: var(--blue);
+}
+.footer .box p{
+  font-size: 1.5rem;
+  color: var(--black);
+}
+.footer .box a{
+  color: var(--black);
+  font-size: 2rem;
+  display: block;
+  padding: .2rem 0;
+  transition: color 0.2s;
+}
+.footer .box a:hover{
+  color: var(--blue);
+  text-decoration: underline;
+}
+.footer .credit{
+  width: 85%;
+  padding-top: 1rem;
+  font-size: 2rem;
+  color: var(--black);
+  text-align: center;
+  border-top: .2rem solid #e6f3ff;
+  margin-top: 1.5rem;
+}
+.footer .credit span{
+  color: var(--blue);
+  text-decoration: underline;
+  letter-spacing: .5rem;
+}
+/* footer section end  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media query  */
+
+@media (max-width:768px){
+
+  html{
+      font-size: 55%;
+  }
+
+  header .fa-bars{
+      display: block;
+  }
+  
+  header .navbar{
+      position: fixed;
+      top: -100rem; left: 0;
+      width: 100%;
+      background: var(--wight);
+      opacity: 0;
+  }
+
+  header .navbar ul{
+      flex-flow: column;
+      padding: 2rem 0;
+  }
+
+  header .navbar ul li{
+      margin: 1rem 0;
+      width: 100%;
+      text-align: center;
+  }
+
+  header .navbar ul li a{
+      font-size: 3rem;
+      display: block;
+  }
+
+  header .nav-toggle{
+      top: 5.5rem;
+      opacity: 1;
+  }
+
+  /* home media query  */
+
+  .home .row{
+      flex-flow: column;
+  }
+
+  .home .row .content{
+      text-align: center;
+  }
+
+  /* home images  */
+  .home .row .images img{
+      width: 100%;
+  }
+
+/* about media query  */
+ .about .box-container .box{
+  flex-flow: column;
+  width: 90%;
+ }
+
+ .about .box-container .box:nth-child(even){
+  flex-flow: column;
+ }
+
+ .about .box-container .box .images{
+  width: 100%;
+ }
+
+ .about .box-container .box .content{
+  width: 100%;
+ }
+ 
+ /* contact form  */
+ .contact .row{
+  flex-flow: column;
+ }
+
+ .contact .row .images img{
+  height: 50vh;
+  width: 90vw;
+ }
+
+ .contact .row .form-container{
+  width: 90%;
+  padding: 0;
+ }
+}
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+
+        <a href="http://127.0.0.1:5000/" class="logo"> <h2 class="logo"><span>v</span>ita <span>C</span>ares</h2></a>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/vita">vitamins</a></li>
+                <li><a href="/diseases">diseases</a></li>
+                <li><a href="/predict">check vitamins</a></li>
+                <li><a href="/contact">contact</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="fas fa-bars"></div>
+    </header>
+
+    <section id="contact" class="contact" style="margin-bottom: 2.5em;">
+        <h1 class="heading" style="margin-bottom:0.5em;">Contact Us</h1>
+        <h3 class="title" style="margin-bottom:2em;">You can talk to us anytime</h3>
+        <div class="contact-section">
+            <div class="contact-image">
+                <img src="{{ url_for('static', filename='images/form.png') }}" alt="Contact Illustration">
+            </div>
+            <div class="contact-form">
+                <form method="POST" action="/contact">
+                    <input type="text" placeholder="Full name" name="name" required>
+                    <input type="email" placeholder="Enter your email" name="email" required>
+                    <input type="number" placeholder="Phone" name="phone" required>
+                    <textarea name="message" cols="30" rows="6" placeholder="Message" required></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="box">
+            <h2 class="logo"><span>V</span>ita <span>C</span>ares</h2>
+            <p>VitaCares provides innovative healthcare solutions through AI-powered vitamin deficiency detection and personalized health recommendations.</p>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>S</span>hare</h2>
+            <a href="#"><i class="fab fa-facebook"></i> facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+        </div>
+
+        <div class="box">
+            <h2 class="logo"><span>L</span>inks</h2>
+            <a href="/">home</a>
+            <a href="/about">about</a>
+            <a href="/vita">vitamins</a>
+            <a href="/diseases">diseases</a>
+            <a href="/predict">check vitamins</a>
+            <a href="/contact">contact</a>
+        </div>
+
+        <h1 class="credit">created by <span>Neel Merja & Krishna Modhavadiya</span> all rights reserved.</h1>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/02/05/09/20250205095716-4K0TQ7NK.js"></script>
+    
+    
+    <script >
+        $(document).ready(function(){
+
+$('.fa-bars').click(function(){
+    $(this).toggleClass('fa-times');
+    $('.navbar').toggleClass('nav-toggle');
+});
+
+$(window).on('scroll load',function(){
+    $('.fa-bars').removeClass('fa-times');
+    $('.navbar').removeClass('nav-toggle');
+
+    if($(Window).scrollTop()  >  30){
+        $('header').addClass('header-active');
+    }else{
+        $('header').removeClass('header-active');
+    }
+});
+
+
+});
+
+    </script>
+</body>
+
+</html>
